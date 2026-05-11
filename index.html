@@ -6,199 +6,113 @@
 <title>ADM Testing Framework — Silk-Based Acellular Dermal Matrix</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap');
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --navy:   #0d2340;
-    --teal:   #1a7a5e;
-    --blue:   #1a3d7a;
-    --brown:  #7a4a1a;
-    --purple: #5a1a7a;
-    --gold:   #7a5a00;
-    --bg:     #f7f5f0;
-    --white:  #ffffff;
-  }
-
-  body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: var(--bg);
-    color: #2a2a2a;
-    padding: 28px 16px 48px;
-    min-height: 100vh;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    max-width: 1100px; margin: 0 auto 28px;
-    background: linear-gradient(135deg, #0d2340 0%, #1a4a7a 60%, #0d3d2e 100%);
-    border-radius: 12px; padding: 32px 40px; color: #fff;
-  }
-  .header-label {
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    color: #9ec5e8; margin-bottom: 8px; font-family: 'Source Sans 3', sans-serif;
-  }
-  .header h1 {
-    font-family: 'Lora', serif; font-size: 24px; font-weight: 700;
-    line-height: 1.35; color: #fff; margin-bottom: 12px;
-  }
+  body { font-family: 'Source Sans 3', sans-serif; background: #f7f5f0; color: #2a2a2a; padding: 28px 16px 48px; }
+ 
+  /* HEADER */
+  .header { max-width: 1100px; margin: 0 auto 28px; background: linear-gradient(135deg, #0d2340 0%, #1a4a7a 60%, #0d3d2e 100%); border-radius: 12px; padding: 32px 40px; color: #fff; }
+  .header-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #9ec5e8; margin-bottom: 8px; }
+  .header h1 { font-family: 'Lora', serif; font-size: 24px; font-weight: 700; line-height: 1.35; color: #fff; margin-bottom: 12px; }
   .header h1 span { color: #7dd4b0; }
   .header p { font-size: 13.5px; color: #b8d4eb; line-height: 1.7; }
   .header p small { font-size: 11px; color: #9ec5e8; display: block; margin-top: 4px; }
-
-  /* ── FILTER TABS ── */
-  .filters {
-    max-width: 1100px; margin: 0 auto 20px;
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .filter-btn {
-    padding: 7px 16px; border-radius: 20px; border: none; cursor: pointer;
-    font-family: 'Source Sans 3', sans-serif; font-size: 12px; font-weight: 400;
-    background: #fff; color: #555;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: all 0.2s ease;
-  }
+ 
+  /* FILTERS */
+  .filters { max-width: 1100px; margin: 0 auto 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .filter-btn { padding: 7px 16px; border-radius: 20px; border: none; cursor: pointer; font-family: 'Source Sans 3', sans-serif; font-size: 12px; background: #fff; color: #555; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.2s; }
   .filter-btn.active { font-weight: 700; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-  .filter-btn.cat-a.active { background: #1a7a5e; }
-  .filter-btn.cat-b.active { background: #1a3d7a; }
-  .filter-btn.cat-c.active { background: #7a4a1a; }
-  .filter-btn.cat-d.active { background: #5a1a7a; }
-  .filter-btn.cat-e.active { background: #7a5a00; }
-  .filter-btn.cat-all.active { background: #0d2340; }
-
-  /* ── CATEGORY BLOCK ── */
+  .filter-btn.cat-a.active { background: #1a7a5e; } .filter-btn.cat-b.active { background: #1a3d7a; }
+  .filter-btn.cat-c.active { background: #7a4a1a; } .filter-btn.cat-d.active { background: #5a1a7a; }
+  .filter-btn.cat-e.active { background: #7a5a00; } .filter-btn.cat-all.active { background: #0d2340; }
+ 
+  /* CATEGORY BLOCKS */
   .category-block { max-width: 1100px; margin: 0 auto 28px; }
   .category-block.hidden { display: none; }
-
-  .cat-header {
-    color: #fff; padding: 10px 20px;
-    border-radius: 8px 8px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.4px;
-    font-family: 'Lora', serif;
-  }
-  .cat-a .cat-header { background: #1a7a5e; }
-  .cat-b .cat-header { background: #1a3d7a; }
-  .cat-c .cat-header { background: #7a4a1a; }
-  .cat-d .cat-header { background: #5a1a7a; }
-  .cat-e .cat-header { background: #7a5a00; }
-
-  .table-wrap {
-    background: #fff; border-radius: 0 0 8px 8px;
-    overflow-x: auto; box-shadow: 0 2px 14px rgba(0,0,0,0.07);
-  }
-
+  .cat-header { color: #fff; padding: 10px 20px; border-radius: 8px 8px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.4px; font-family: 'Lora', serif; }
+  .cat-a .cat-header { background: #1a7a5e; } .cat-b .cat-header { background: #1a3d7a; }
+  .cat-c .cat-header { background: #7a4a1a; } .cat-d .cat-header { background: #5a1a7a; } .cat-e .cat-header { background: #7a5a00; }
+  .table-wrap { background: #fff; border-radius: 0 0 8px 8px; overflow-x: auto; box-shadow: 0 2px 14px rgba(0,0,0,0.07); }
   table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 860px; }
-
   thead tr { border-bottom: 2px solid rgba(0,0,0,0.12); }
-  thead th {
-    padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px;
-    font-family: 'Source Sans 3', sans-serif;
-  }
-  .cat-a thead th { color: #1a7a5e; background: #e8f4f0; }
-  .cat-b thead th { color: #1a3d7a; background: #e8eef8; }
-  .cat-c thead th { color: #7a4a1a; background: #f8f0e8; }
-  .cat-d thead th { color: #5a1a7a; background: #f5e8f5; }
-  .cat-e thead th { color: #7a5a00; background: #fef6e4; }
-
+  thead th { padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; }
+  .cat-a thead th { color: #1a7a5e; background: #e8f4f0; } .cat-b thead th { color: #1a3d7a; background: #e8eef8; }
+  .cat-c thead th { color: #7a4a1a; background: #f8f0e8; } .cat-d thead th { color: #5a1a7a; background: #f5e8f5; } .cat-e thead th { color: #7a5a00; background: #fef6e4; }
   tbody tr.data-row { cursor: pointer; border-bottom: 1px solid #efefef; transition: background 0.15s; }
   tbody tr.data-row:hover { filter: brightness(0.96); }
-
-  .cat-a tbody tr.data-row:nth-child(4n+1) { background: #fff; }
-  .cat-a tbody tr.data-row:nth-child(4n+3) { background: #f0faf6; }
-  .cat-b tbody tr.data-row:nth-child(4n+1) { background: #fff; }
-  .cat-b tbody tr.data-row:nth-child(4n+3) { background: #f0f4fc; }
-  .cat-c tbody tr.data-row:nth-child(4n+1) { background: #fff; }
-  .cat-c tbody tr.data-row:nth-child(4n+3) { background: #fcf5ed; }
-  .cat-d tbody tr.data-row:nth-child(4n+1) { background: #fff; }
-  .cat-d tbody tr.data-row:nth-child(4n+3) { background: #faf0fa; }
-  .cat-e tbody tr.data-row:nth-child(4n+1) { background: #fff; }
-  .cat-e tbody tr.data-row:nth-child(4n+3) { background: #fffbf0; }
-
+  .cat-a tbody tr.data-row:nth-child(4n+1) { background:#fff; } .cat-a tbody tr.data-row:nth-child(4n+3) { background:#f0faf6; }
+  .cat-b tbody tr.data-row:nth-child(4n+1) { background:#fff; } .cat-b tbody tr.data-row:nth-child(4n+3) { background:#f0f4fc; }
+  .cat-c tbody tr.data-row:nth-child(4n+1) { background:#fff; } .cat-c tbody tr.data-row:nth-child(4n+3) { background:#fcf5ed; }
+  .cat-d tbody tr.data-row:nth-child(4n+1) { background:#fff; } .cat-d tbody tr.data-row:nth-child(4n+3) { background:#faf0fa; }
+  .cat-e tbody tr.data-row:nth-child(4n+1) { background:#fff; } .cat-e tbody tr.data-row:nth-child(4n+3) { background:#fffbf0; }
   td { padding: 11px 14px; vertical-align: top; line-height: 1.55; }
-
   td.num { font-weight: 700; font-size: 13px; width: 30px; }
-  .cat-a td.num { color: #1a7a5e; }
-  .cat-b td.num { color: #1a3d7a; }
-  .cat-c td.num { color: #7a4a1a; }
-  .cat-d td.num { color: #5a1a7a; }
-  .cat-e td.num { color: #7a5a00; }
-
-  td.test-name { font-weight: 600; color: #111; width: 185px; }
+  .cat-a td.num { color:#1a7a5e; } .cat-b td.num { color:#1a3d7a; } .cat-c td.num { color:#7a4a1a; } .cat-d td.num { color:#5a1a7a; } .cat-e td.num { color:#7a5a00; }
+  td.test-name { font-weight: 600; color: #111; width: 175px; }
   td.test-name small { display: block; font-size: 10px; font-weight: 400; margin-top: 3px; }
-  .cat-a td.test-name small { color: #1a7a5e; }
-  .cat-b td.test-name small { color: #1a3d7a; }
-  .cat-c td.test-name small { color: #7a4a1a; }
-  .cat-d td.test-name small { color: #5a1a7a; }
-  .cat-e td.test-name small { color: #7a5a00; }
-
-  td.purpose  { color: #444; width: 200px; }
-  td.protocol { color: #555; }
-  td.benchmark { color: #333; font-style: italic; width: 210px; }
-  td.std { font-size: 11px; font-weight: 600; width: 105px; }
-  .cat-a td.std { color: #1a7a5e; }
-  .cat-b td.std { color: #1a3d7a; }
-  .cat-c td.std { color: #7a4a1a; }
-  .cat-d td.std { color: #5a1a7a; }
-  .cat-e td.std { color: #7a5a00; }
-
-  tr.ref-row { display: none; }
-  tr.ref-row.open { display: table-row; }
-  tr.ref-row td {
-    font-size: 12px; color: #555; padding: 8px 14px 14px 36px;
-    border-bottom: 2px solid rgba(0,0,0,0.08);
-  }
-  .cat-a tr.ref-row { background: #e8f4f0; }
-  .cat-b tr.ref-row { background: #e8eef8; }
-  .cat-c tr.ref-row { background: #f8f0e8; }
-  .cat-d tr.ref-row { background: #f5e8f5; }
-  .cat-e tr.ref-row { background: #fef6e4; }
-
-  tr.ref-row td strong { margin-right: 6px; }
-  .cat-a tr.ref-row td strong { color: #1a7a5e; }
-  .cat-b tr.ref-row td strong { color: #1a3d7a; }
-  .cat-c tr.ref-row td strong { color: #7a4a1a; }
-  .cat-d tr.ref-row td strong { color: #5a1a7a; }
-  .cat-e tr.ref-row td strong { color: #7a5a00; }
-
-  /* ── SPEC PARAGRAPH ── */
-  .spec-box {
-    max-width: 1100px; margin: 32px auto 0;
-    background: linear-gradient(135deg, #0d2340, #0d3d2e);
-    border-radius: 12px; padding: 32px 40px;
-  }
-  .spec-box .spec-label {
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    color: #9ec5e8; margin-bottom: 10px; display: block;
-  }
-  .spec-box h2 {
-    font-family: 'Lora', serif; font-size: 18px; font-weight: 700;
-    color: #7dd4b0; margin-bottom: 16px;
-  }
-  .spec-box p { line-height: 1.85; color: #dce8f5; font-size: 14px; }
-  .spec-box p strong { color: #7dd4b0; }
-  .spec-box .spec-footer {
-    margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.15);
-    font-size: 11px; color: #9ec5e8;
-  }
-
-  /* ── FOOTER HINT ── */
-  .hint { max-width: 1100px; margin: 12px auto; font-size: 11px; color: #999; text-align: center; }
+  .cat-a td.test-name small { color:#1a7a5e; } .cat-b td.test-name small { color:#1a3d7a; } .cat-c td.test-name small { color:#7a4a1a; } .cat-d td.test-name small { color:#5a1a7a; } .cat-e td.test-name small { color:#7a5a00; }
+  td.purpose { color: #444; width: 195px; } td.protocol { color: #555; } td.benchmark { color: #333; font-style: italic; width: 195px; }
+  td.std { font-size: 11px; font-weight: 600; width: 95px; }
+  .cat-a td.std { color:#1a7a5e; } .cat-b td.std { color:#1a3d7a; } .cat-c td.std { color:#7a4a1a; } .cat-d td.std { color:#5a1a7a; } .cat-e td.std { color:#7a5a00; }
+  td.refs-cell { width: 115px; }
+  .cite-link { display:inline-block; margin:2px 2px 2px 0; border-radius:4px; padding:2px 7px; font-size:10px; font-weight:700; text-decoration:none; transition:background 0.15s; cursor:pointer; }
+  .cat-a .cite-link { background:#e8f4f0; border:1px solid #9ecfbe; color:#1a7a5e; } .cat-a .cite-link:hover { background:#1a7a5e; color:#fff; }
+  .cat-b .cite-link { background:#e8eef8; border:1px solid #9eb0d8; color:#1a3d7a; } .cat-b .cite-link:hover { background:#1a3d7a; color:#fff; }
+  .cat-c .cite-link { background:#f8f0e8; border:1px solid #d8b89e; color:#7a4a1a; } .cat-c .cite-link:hover { background:#7a4a1a; color:#fff; }
+  .cat-d .cite-link { background:#f5e8f5; border:1px solid #c09ec0; color:#5a1a7a; } .cat-d .cite-link:hover { background:#5a1a7a; color:#fff; }
+  .cat-e .cite-link { background:#fef6e4; border:1px solid #d4c07a; color:#7a5a00; } .cat-e .cite-link:hover { background:#7a5a00; color:#fff; }
+  tr.ref-row { display:none; } tr.ref-row.open { display:table-row; }
+  tr.ref-row td { font-size:12px; color:#555; padding:8px 14px 14px 36px; border-bottom:2px solid rgba(0,0,0,0.08); }
+  .cat-a tr.ref-row { background:#e8f4f0; } .cat-b tr.ref-row { background:#e8eef8; } .cat-c tr.ref-row { background:#f8f0e8; } .cat-d tr.ref-row { background:#f5e8f5; } .cat-e tr.ref-row { background:#fef6e4; }
+  .cat-a tr.ref-row td strong { color:#1a7a5e; } .cat-b tr.ref-row td strong { color:#1a3d7a; } .cat-c tr.ref-row td strong { color:#7a4a1a; } .cat-d tr.ref-row td strong { color:#5a1a7a; } .cat-e tr.ref-row td strong { color:#7a5a00; }
+ 
+  /* SPEC BOX */
+  .spec-box { max-width:1100px; margin:32px auto 0; background:linear-gradient(135deg,#0d2340,#0d3d2e); border-radius:12px; padding:32px 40px; }
+  .spec-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#9ec5e8; margin-bottom:10px; display:block; }
+  .spec-box h2 { font-family:'Lora',serif; font-size:18px; font-weight:700; color:#7dd4b0; margin-bottom:16px; }
+  .spec-box p { line-height:1.85; color:#dce8f5; font-size:14px; }
+  .spec-box p strong { color:#7dd4b0; }
+  .spec-footer { margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.15); font-size:11px; color:#9ec5e8; }
+ 
+  /* REFERENCES SECTION */
+  .ref-section { max-width:1100px; margin:32px auto 0; background:#fff; border-radius:12px; box-shadow:0 2px 14px rgba(0,0,0,0.08); overflow:hidden; }
+  .ref-section-header { background:linear-gradient(90deg,#0d2340,#1a4a7a); padding:14px 28px; display:flex; align-items:center; gap:12px; }
+  .ref-section-header h2 { font-family:'Lora',serif; font-size:17px; color:#fff; font-weight:700; }
+  .ref-section-header span { font-size:11px; color:#9ec5e8; margin-left:auto; }
+  .ref-filter-row { padding:12px 20px; background:#f7f5f0; display:flex; flex-wrap:wrap; gap:8px; align-items:center; border-bottom:1px solid #e0dcd4; }
+  .ref-filter-row label { font-size:12px; font-weight:600; color:#555; margin-right:4px; }
+  .ref-tag-btn { padding:4px 12px; border-radius:12px; border:1px solid #ccc; cursor:pointer; font-size:11px; font-weight:600; background:#fff; color:#666; transition:all 0.15s; }
+  .ref-tag-btn.active-ref { background:#0d2340; color:#fff; border-color:#0d2340; }
+  .ref-table-wrap { overflow-x:auto; }
+  .ref-table { width:100%; border-collapse:collapse; font-size:13px; min-width:760px; }
+  .ref-table thead th { padding:10px 16px; text-align:left; background:#e8eef8; color:#1a3d7a; font-weight:700; font-size:12px; border-bottom:2px solid #b0c0e0; }
+  .ref-table tbody tr { border-bottom:1px solid #efefef; transition:background 0.12s; }
+  .ref-table tbody tr:hover { background:#f0f4fc !important; }
+  .ref-table tbody tr.ref-hidden { display:none; }
+  .ref-table td { padding:11px 16px; vertical-align:top; line-height:1.6; }
+  .ref-num { font-weight:700; color:#1a3d7a; width:45px; font-size:14px; }
+  .ref-tag { display:inline-block; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700; margin:2px 2px 2px 0; white-space:nowrap; }
+  .tag-a { background:#e8f4f0; color:#1a7a5e; border:1px solid #9ecfbe; } .tag-b { background:#e8eef8; color:#1a3d7a; border:1px solid #9eb0d8; }
+  .tag-c { background:#f8f0e8; color:#7a4a1a; border:1px solid #d8b89e; } .tag-d { background:#f5e8f5; color:#5a1a7a; border:1px solid #c09ec0; } .tag-e { background:#fef6e4; color:#7a5a00; border:1px solid #d4c07a; }
+  .ref-citation { color:#222; font-size:13px; line-height:1.7; }
+  .ref-citation em { font-style:italic; }
+  .ref-link { color:#1a3d7a; text-decoration:none; font-size:11px; word-break:break-all; display:inline-block; margin-top:3px; }
+  .ref-link:hover { text-decoration:underline; }
+  .test-badge { display:inline-block; background:#f0f4fc; border:1px solid #b0c0e0; border-radius:4px; padding:1px 6px; font-size:10px; color:#1a3d7a; margin:2px 2px 0 0; font-weight:600; }
+  .hint { max-width:1100px; margin:12px auto; font-size:11px; color:#999; text-align:center; }
 </style>
 </head>
 <body>
-
-<!-- ══════════════════ HEADER ══════════════════ -->
+ 
+<!-- HEADER -->
 <div class="header">
-  <div class="header-label">Research &amp; Development · Biomaterials</div>
-  <h1>Comprehensive Testing Framework for<br>
-    <span>Acellular Dermal Matrices (ADMs)</span>
-  </h1>
-  <p>
-    Mechanical, Physical, Biochemical &amp; Biocompatibility Assessment — Applicable to Silk-Based ADM Alternatives
-    <small>Compiled from peer-reviewed literature, industry datasheets, and regulatory standards (ISO / ASTM)</small>
+  <div class="header-label">Research &amp; Development · Biomaterials · Serigen Mediproducts Pvt Ltd</div>
+  <h1>Comprehensive Testing Framework for<br><span>Acellular Dermal Matrices (ADMs)</span></h1>
+  <p>Mechanical, Physical, Biochemical &amp; Biocompatibility Assessment — Silk-Based ADM Alternatives for Breast Reconstruction
+    <small>Compiled from peer-reviewed literature, industry datasheets &amp; regulatory standards (ISO / ASTM) · Prepared 11 May 2026 by Ayush Bhoj</small>
   </p>
 </div>
-
-<!-- ══════════════════ FILTER TABS ══════════════════ -->
+ 
+<!-- FILTERS -->
 <div class="filters">
   <button class="filter-btn cat-all active" onclick="filterCat('all',this)">All Tests (27)</button>
   <button class="filter-btn cat-a" onclick="filterCat('a',this)">A. Decellularization &amp; Biochemical</button>
@@ -207,415 +121,382 @@
   <button class="filter-btn cat-d" onclick="filterCat('d',this)">D. Spectroscopic &amp; Thermal</button>
   <button class="filter-btn cat-e" onclick="filterCat('e',this)">E. Biocompatibility &amp; Safety</button>
 </div>
-
-<!-- ══════════════════ CATEGORY A ══════════════════ -->
+ 
+<!-- ===== CATEGORY A ===== -->
 <div class="category-block cat-a" id="block-a">
   <div class="cat-header">A. Decellularization &amp; Biochemical Assessment</div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th style="width:30px">#</th>
-        <th style="width:185px">Test Name</th>
-        <th style="width:200px">Purpose</th>
-        <th>Protocol Summary</th>
-        <th style="width:210px">Benchmark / Target</th>
-        <th style="width:105px">Standard</th>
-      </tr></thead>
-      <tbody>
-
-        <tr class="data-row" onclick="toggleRef('r1')">
-          <td class="num">1</td>
-          <td class="test-name">H&amp;E (Hematoxylin &amp; Eosin) Staining<small>Click to see reference ↓</small></td>
-          <td class="purpose">Confirms absence of cells and intact nuclei; verifies collagen architecture preservation</td>
-          <td class="protocol">Paraffin-embedded sections (5 µm), rehydrated and stained per standard H&amp;E protocol; evaluated under light microscopy at 40×, 100×, and 200× magnification</td>
-          <td class="benchmark">No visible nuclei (blue-stained); intact collagen fibril network (pink)</td>
-          <td class="std">Standard Histology Protocol</td>
-        </tr>
-        <tr class="ref-row" id="r1"><td colspan="6"><strong>📚 References:</strong> Haque et al. (2020), Bioengineering — PMC7356368; Porzionato et al. (2021), ScienceDirect — PMID34119882</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r2')">
-          <td class="num">2</td>
-          <td class="test-name">DAPI Staining<small>Click to see reference ↓</small></td>
-          <td class="purpose">Fluorescence detection of residual intact nuclei post-decellularization</td>
-          <td class="protocol">Cryosectioned or paraffin sections stained with DAPI (4′,6-diamidino-2-phenylindole); fluorescence microscopy to detect nuclear remnants</td>
-          <td class="benchmark">No fluorescent nuclei visible; confirms complete decellularization</td>
-          <td class="std">Established Decellularization Criterion</td>
-        </tr>
-        <tr class="ref-row" id="r2"><td colspan="6"><strong>📚 References:</strong> Broyles et al. (2014), PMC4292858; Kim et al. (2021), PMC8408741</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r3')">
-          <td class="num">3</td>
-          <td class="test-name">Residual dsDNA Quantification (PicoGreen Assay)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Quantifies remaining double-stranded DNA — the primary immunogenicity safety marker</td>
-          <td class="protocol">Tissue digested with papain solution; dsDNA measured using Quant-IT PicoGreen Kit (Invitrogen); agarose gel electrophoresis for fragment size assessment</td>
-          <td class="benchmark">&lt;50 ng dsDNA/mg dry tissue (international consensus threshold); AlloMax benchmark: ~200 ng/mg</td>
-          <td class="std">PicoGreen Assay / Gel Electrophoresis</td>
-        </tr>
-        <tr class="ref-row" id="r3"><td colspan="6"><strong>📚 References:</strong> Porzionato et al. (2021), PMID34119882; Broyles et al. (2014), PMC4292858; Kim et al. (2021), PMC8408741</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r4')">
-          <td class="num">4</td>
-          <td class="test-name">Total Collagen Quantification (Hydroxyproline Assay)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures preservation of collagen — the primary structural ECM component — post-decellularization</td>
-          <td class="protocol">Papain digestion of dry sample; hydroxyproline content measured colorimetrically; reported as µg collagen/mg dry tissue</td>
-          <td class="benchmark">≥70–80% of native tissue collagen values; intact collagen structure on polarized light microscopy</td>
-          <td class="std">Standard Biochemical Assay</td>
-        </tr>
-        <tr class="ref-row" id="r4"><td colspan="6"><strong>📚 References:</strong> Porzionato et al. (2021), PMID34119882; Kim et al. (2021), PMC8408741</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r5')">
-          <td class="num">5</td>
-          <td class="test-name">GAG Quantification (DMMB Assay)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures retention of glycosaminoglycans — key ECM signaling and hydration molecules</td>
-          <td class="protocol">Papain digestion; 1,9-dimethylmethylene blue (DMMB) colorimetric assay; reported as µg GAG/mg dry tissue</td>
-          <td class="benchmark">≥60–70% GAG retention vs. native tissue; excessive loss indicates over-aggressive decellularization</td>
-          <td class="std">DMMB Colorimetric Assay</td>
-        </tr>
-        <tr class="ref-row" id="r5"><td colspan="6"><strong>📚 References:</strong> Porzionato et al. (2021), PMID34119882; Acellular Scaffold Development — PMC4553380</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r6')">
-          <td class="num">6</td>
-          <td class="test-name">Growth Factor Retention (ELISA)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Verifies that angiogenic and wound-healing growth factors are preserved post-processing</td>
-          <td class="protocol">ELISA kits for VEGF, bFGF, TGF-β1, PDGF; concentrations reported in pg/mg or ng/mL; extracted from lyophilized scaffold material</td>
-          <td class="benchmark">Detectable levels of VEGF, bFGF, TGF-β1; these drive post-implant vascularization and tissue remodeling</td>
-          <td class="std">Human ELISA Immunoassay Kits</td>
-        </tr>
-        <tr class="ref-row" id="r6"><td colspan="6"><strong>📚 References:</strong> Broyles et al. (2014), PMC4292858; Kim et al. (2021), PMC8408741</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r7')">
-          <td class="num">7</td>
-          <td class="test-name">Immunohistochemistry — ECM Antigen Panel<small>Click to see reference ↓</small></td>
-          <td class="purpose">Staining for cellular antigens (HLA-ABC, HLA-DR, vimentin) and ECM proteins (fibronectin, laminin, elastin, collagen IV/VII)</td>
-          <td class="protocol">Standard IHC on paraffin sections; antibody panels for cellular and ECM markers; confirms removal of immunogenic antigens while retaining structural ECM</td>
-          <td class="benchmark">Absence of HLA-DR and vimentin; retention of fibronectin, laminin, and elastin</td>
-          <td class="std">Standard IHC Protocol</td>
-        </tr>
-        <tr class="ref-row" id="r7"><td colspan="6"><strong>📚 References:</strong> Characterization of ADMs by Two Different Methods — PMID9625233</td></tr>
-
-      </tbody>
-    </table>
-  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th style="width:30px">#</th><th style="width:175px">Test Name</th><th style="width:190px">Purpose</th><th>Protocol Summary</th><th style="width:190px">Benchmark / Target</th><th style="width:95px">Standard</th><th style="width:115px">References</th></tr></thead>
+    <tbody>
+      <tr class="data-row" onclick="toggleRef('xA1')"><td class="num">1</td><td class="test-name">H&amp;E Staining<small>Click row to expand ↓</small></td><td class="purpose">Confirms absence of intact nuclei; verifies collagen architecture preservation</td><td class="protocol">Paraffin-embedded sections (5 µm), rehydrated per standard H&amp;E protocol; evaluated under light microscopy at 40×, 100×, 200×</td><td class="benchmark">No visible nuclei (blue); intact pink collagen fibril network</td><td class="std">Standard Histology Protocol</td><td class="refs-cell"><a class="cite-link" href="#ref1" onclick="highlightRef(event,'ref1')">R1</a> <a class="cite-link" href="#ref2" onclick="highlightRef(event,'ref2')">R2</a></td></tr>
+      <tr class="ref-row" id="xA1"><td colspan="7"><strong>📚 Note:</strong> See References R1 (Haque et al., 2020) and R2 (Porzionato et al., 2018) in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xA2')"><td class="num">2</td><td class="test-name">DAPI Staining<small>Click row to expand ↓</small></td><td class="purpose">Fluorescence detection of residual intact nuclei post-decellularization</td><td class="protocol">Cryosectioned or paraffin sections stained with DAPI; fluorescence microscopy to detect nuclear remnants</td><td class="benchmark">No fluorescent nuclei visible; confirms complete decellularization</td><td class="std">Decellularization Criterion</td><td class="refs-cell"><a class="cite-link" href="#ref3" onclick="highlightRef(event,'ref3')">R3</a> <a class="cite-link" href="#ref4" onclick="highlightRef(event,'ref4')">R4</a></td></tr>
+      <tr class="ref-row" id="xA2"><td colspan="7"><strong>📚 Note:</strong> See References R3 (Broyles et al., 2014) and R4 (Kim et al., 2021) in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xA3')"><td class="num">3</td><td class="test-name">Residual dsDNA Quantification (PicoGreen Assay)<small>Click row to expand ↓</small></td><td class="purpose">Quantifies remaining double-stranded DNA — primary immunogenicity safety marker</td><td class="protocol">Papain digestion; dsDNA measured using Quant-IT PicoGreen Kit (Invitrogen); agarose gel electrophoresis for fragment-size assessment</td><td class="benchmark">&lt;50 ng dsDNA/mg dry tissue (international consensus threshold)</td><td class="std">PicoGreen / Gel Electrophoresis</td><td class="refs-cell"><a class="cite-link" href="#ref2" onclick="highlightRef(event,'ref2')">R2</a> <a class="cite-link" href="#ref3" onclick="highlightRef(event,'ref3')">R3</a> <a class="cite-link" href="#ref4" onclick="highlightRef(event,'ref4')">R4</a></td></tr>
+      <tr class="ref-row" id="xA3"><td colspan="7"><strong>📚 Note:</strong> See References R2, R3, R4 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xA4')"><td class="num">4</td><td class="test-name">Total Collagen Quantification (Hydroxyproline Assay)<small>Click row to expand ↓</small></td><td class="purpose">Measures preservation of collagen — primary structural ECM component — post-decellularization</td><td class="protocol">Papain digestion; hydroxyproline content measured colorimetrically; reported as µg collagen/mg dry tissue</td><td class="benchmark">≥70–80% of native tissue collagen values; intact structure on polarized light microscopy</td><td class="std">Standard Biochemical Assay</td><td class="refs-cell"><a class="cite-link" href="#ref2" onclick="highlightRef(event,'ref2')">R2</a> <a class="cite-link" href="#ref4" onclick="highlightRef(event,'ref4')">R4</a></td></tr>
+      <tr class="ref-row" id="xA4"><td colspan="7"><strong>📚 Note:</strong> See References R2, R4 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xA5')"><td class="num">5</td><td class="test-name">GAG Quantification (DMMB Assay)<small>Click row to expand ↓</small></td><td class="purpose">Measures retention of glycosaminoglycans — key ECM signaling and hydration molecules</td><td class="protocol">Papain digestion; 1,9-dimethylmethylene blue (DMMB) colorimetric assay; reported as µg GAG/mg dry tissue</td><td class="benchmark">≥60–70% GAG retention vs. native tissue</td><td class="std">DMMB Colorimetric Assay</td><td class="refs-cell"><a class="cite-link" href="#ref2" onclick="highlightRef(event,'ref2')">R2</a> <a class="cite-link" href="#ref5" onclick="highlightRef(event,'ref5')">R5</a></td></tr>
+      <tr class="ref-row" id="xA5"><td colspan="7"><strong>📚 Note:</strong> See References R2, R5 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xA6')"><td class="num">6</td><td class="test-name">Growth Factor Retention (ELISA)<small>Click row to expand ↓</small></td><td class="purpose">Verifies VEGF, bFGF, TGF-β1, PDGF are preserved post-processing — drive vascularization and remodeling</td><td class="protocol">ELISA kits for VEGF, bFGF, TGF-β1, PDGF; concentrations in pg/mg or ng/mL extracted from lyophilized scaffold material</td><td class="benchmark">Detectable levels of VEGF, bFGF, and TGF-β1 mandatory</td><td class="std">Human ELISA Immunoassay Kits</td><td class="refs-cell"><a class="cite-link" href="#ref3" onclick="highlightRef(event,'ref3')">R3</a> <a class="cite-link" href="#ref4" onclick="highlightRef(event,'ref4')">R4</a></td></tr>
+      <tr class="ref-row" id="xA6"><td colspan="7"><strong>📚 Note:</strong> See References R3, R4 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xA7')"><td class="num">7</td><td class="test-name">Immunohistochemistry — ECM Antigen Panel<small>Click row to expand ↓</small></td><td class="purpose">Staining for cellular antigens (HLA-ABC, HLA-DR, vimentin) and ECM proteins (fibronectin, laminin, elastin, collagen IV/VII)</td><td class="protocol">Standard IHC on paraffin sections; antibody panels confirm removal of immunogenic antigens while retaining structural ECM proteins</td><td class="benchmark">Absence of HLA-DR and vimentin; retention of fibronectin, laminin, elastin</td><td class="std">Standard IHC Protocol</td><td class="refs-cell"><a class="cite-link" href="#ref6" onclick="highlightRef(event,'ref6')">R6</a></td></tr>
+      <tr class="ref-row" id="xA7"><td colspan="7"><strong>📚 Note:</strong> See Reference R6 (Livesey et al., 1995) in the AMA References table below.</td></tr>
+    </tbody>
+  </table></div>
 </div>
-
-<!-- ══════════════════ CATEGORY B ══════════════════ -->
+ 
+<!-- ===== CATEGORY B ===== -->
 <div class="category-block cat-b" id="block-b">
   <div class="cat-header">B. Mechanical Tests</div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th style="width:30px">#</th>
-        <th style="width:185px">Test Name</th>
-        <th style="width:200px">Purpose</th>
-        <th>Protocol Summary</th>
-        <th style="width:210px">Benchmark / Target</th>
-        <th style="width:105px">Standard</th>
-      </tr></thead>
-      <tbody>
-
-        <tr class="data-row" onclick="toggleRef('r8')">
-          <td class="num">8</td>
-          <td class="test-name">Uniaxial Tensile Testing<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures max load (N), tensile strength (MPa), elongation at break (%), elastic modulus — the core mechanical fingerprint of any scaffold</td>
-          <td class="protocol">Specimens 10×7 mm or dog-bone shaped per ASTM D638-03 / ASTM D-3039; pulled at 30 mm/min on Instron universal tester; gauge length 30 mm; tensile strength = max load ÷ cross-sectional area</td>
-          <td class="benchmark">BellaCell HD: 444.94 N load, 22.44 MPa tensile strength, 118.41% elongation. Silk films: 52–58 MPa. Target: ≥20 MPa; ≥100% elongation</td>
-          <td class="std">ASTM D638-03 / ASTM D-3039</td>
-        </tr>
-        <tr class="ref-row" id="r8"><td colspan="6"><strong>📚 References:</strong> Haque et al. (2020), PMC7356368; Frontiers Chemistry — PMC12185429; Xu et al. (2014), ScienceDirect PMID25592780</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r9')">
-          <td class="num">9</td>
-          <td class="test-name">Suture Retention Strength (Pull-out Test)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures force (N) required to pull a suture through the scaffold at a defined distance from edge — critical for surgical fixation integrity</td>
-          <td class="protocol">Sample 2×4 cm; suture passed 1.0 cm from edge (No. 2 suture, bowline knot); gripped and pulled at 25.4 mm/min until pull-through; peak force (N) recorded</td>
-          <td class="benchmark">AlloMend UltraThick (3–4 mm): 161–270 N; BellaCell HD and AlloDerm RTU comparable. Target: ≥100 N pull-out force</td>
-          <td class="std">Based on ASTM F1306</td>
-        </tr>
-        <tr class="ref-row" id="r9"><td colspan="6"><strong>📚 References:</strong> Spartan Medical / AlloSource AlloMend datasheet; Haque et al. (2020), PMC7356368; MDPI Processes — PMID scCO₂ ADM study</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r10')">
-          <td class="num">10</td>
-          <td class="test-name">Burst Strength Test<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures force (N) or pressure (mmHg) the scaffold withstands before rupture — simulates physiological fluid pressure loading</td>
-          <td class="protocol">Sample clamped over orifice; probe applied perpendicular at 25 mm/min; burst force (N) or pressure (mmHg) at failure recorded</td>
-          <td class="benchmark">scCO₂ ADM: 153.92 ± 20.39 N; predicate device: 71.77 ± 18.09 N. Target: ≥100 N burst resistance</td>
-          <td class="std">ASTM F1306</td>
-        </tr>
-        <tr class="ref-row" id="r10"><td colspan="6"><strong>📚 References:</strong> MDPI Processes 2022 — scCO₂ ADM Study (Supercritical CO₂ Decellularization)</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r11')">
-          <td class="num">11</td>
-          <td class="test-name">Tear Strength (Trouserleg Tear Test)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures resistance to tear propagation — important during intraoperative handling and suture placement</td>
-          <td class="protocol">25×50 mm specimen; 10 mm slit from midline edge; gripped in upper/lower grips; pulled at 25.4 mm/min; tear force (N) in longitudinal and transverse directions</td>
-          <td class="benchmark">scCO₂ ADM: 63.45 ± 7.64 N (longitudinal), 37.34 ± 11.72 N (transverse). Target: ≥30 N in both orientations</td>
-          <td class="std">Tensile machine tear protocol</td>
-        </tr>
-        <tr class="ref-row" id="r11"><td colspan="6"><strong>📚 References:</strong> MDPI Processes 2022 — scCO₂ ADM Study</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r12')">
-          <td class="num">12</td>
-          <td class="test-name">Stiffness Evaluation (Flexural Rigidity / Compression Modulus)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures resistance to deformation — determines pliability and conformability to chest wall contour during reconstruction</td>
-          <td class="protocol">ASTM F1306 fixture; probe compresses 5×5 cm sample at 25 mm/min; stiffness (N/mm) = load ÷ displacement. Cylindrical samples for sponge/hydrogel ADMs compressed at 1 mm/min</td>
-          <td class="benchmark">DermACELL: 0.90 N/mm; BellaCell HD: 0.44 N/mm; AlloDerm RTU: 0.28 N/mm. Lower = better drapeability. Target: 0.28–0.90 N/mm</td>
-          <td class="std">ASTM F1306</td>
-        </tr>
-        <tr class="ref-row" id="r12"><td colspan="6"><strong>📚 References:</strong> Haque et al. (2020), PMC7356368; IOP Science 2025 — Thermal-crosslinked ADM with adipose-derived stem cells</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r13')">
-          <td class="num">13</td>
-          <td class="test-name">Drape Testing (Handleability / Pliability Assessment)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Quantifies scaffold conformability to complex anatomical surfaces — directly correlated with surgeon preference and intraoperative handling</td>
-          <td class="protocol">ADM sample placed on a standardised form; displacement/drape length measured quantitatively; correlated with qualitative surgeon handling assessment scores using Likert scale</td>
-          <td class="benchmark">Human-derived ADM (hADM) shows greatest drapeability; pADM-S (Strattice Pliable) shows least. Target: comparable to or better than hADM</td>
-          <td class="std">Quantitative Drape Measurement Protocol</td>
-        </tr>
-        <tr class="ref-row" id="r13"><td colspan="6"><strong>📚 References:</strong> Handling and Material Properties of Porcine and Human ADMs — PMC12342752</td></tr>
-
-      </tbody>
-    </table>
-  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th style="width:30px">#</th><th style="width:175px">Test Name</th><th style="width:190px">Purpose</th><th>Protocol Summary</th><th style="width:190px">Benchmark / Target</th><th style="width:95px">Standard</th><th style="width:115px">References</th></tr></thead>
+    <tbody>
+      <tr class="data-row" onclick="toggleRef('xB8')"><td class="num">8</td><td class="test-name">Uniaxial Tensile Testing<small>Click row to expand ↓</small></td><td class="purpose">Measures max load (N), tensile strength (MPa), elongation at break (%), elastic modulus — core mechanical fingerprint</td><td class="protocol">Dog-bone specimens per ASTM D638-03; pulled at 30 mm/min on Instron tester; gauge length 30 mm; strength = max load ÷ cross-sectional area</td><td class="benchmark">BellaCell HD: 22.44 MPa, 118.41% elongation. Silk films: 52–58 MPa. Target: ≥20 MPa; ≥100% elongation</td><td class="std">ASTM D638-03</td><td class="refs-cell"><a class="cite-link" href="#ref1" onclick="highlightRef(event,'ref1')">R1</a> <a class="cite-link" href="#ref7" onclick="highlightRef(event,'ref7')">R7</a> <a class="cite-link" href="#ref8" onclick="highlightRef(event,'ref8')">R8</a></td></tr>
+      <tr class="ref-row" id="xB8"><td colspan="7"><strong>📚 Note:</strong> See References R1, R7, R8 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xB9')"><td class="num">9</td><td class="test-name">Suture Retention Strength (Pull-out Test)<small>Click row to expand ↓</small></td><td class="purpose">Measures force (N) to pull a suture through the scaffold at a defined edge distance — critical for surgical fixation</td><td class="protocol">Sample 2×4 cm; No. 2 suture passed 1.0 cm from edge; pulled at 25.4 mm/min; peak pull-out force (N) recorded</td><td class="benchmark">AlloMend UltraThick: 161–270 N. BellaCell HD and AlloDerm RTU comparable. Target: ≥100 N</td><td class="std">Based on ASTM F1306</td><td class="refs-cell"><a class="cite-link" href="#ref1" onclick="highlightRef(event,'ref1')">R1</a> <a class="cite-link" href="#ref9" onclick="highlightRef(event,'ref9')">R9</a></td></tr>
+      <tr class="ref-row" id="xB9"><td colspan="7"><strong>📚 Note:</strong> See References R1 (Haque et al., 2020) and R9 (Candage et al., 2008) in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xB10')"><td class="num">10</td><td class="test-name">Burst Strength Test<small>Click row to expand ↓</small></td><td class="purpose">Measures force (N) or pressure (mmHg) the scaffold withstands before rupture — simulates physiological fluid-pressure loading</td><td class="protocol">Sample clamped over orifice; probe applied perpendicular at 25 mm/min; burst force (N) or pressure (mmHg) at failure recorded</td><td class="benchmark">scCO₂ ADM: 153.92 ± 20.39 N; predicate device: 71.77 ± 18.09 N. Target: ≥100 N</td><td class="std">ASTM F1306</td><td class="refs-cell"><a class="cite-link" href="#ref10" onclick="highlightRef(event,'ref10')">R10</a></td></tr>
+      <tr class="ref-row" id="xB10"><td colspan="7"><strong>📚 Note:</strong> See Reference R10 (Janjić et al., 2022) in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xB11')"><td class="num">11</td><td class="test-name">Tear Strength (Trouserleg Tear Test)<small>Click row to expand ↓</small></td><td class="purpose">Measures resistance to tear propagation — important during intraoperative handling and suture placement</td><td class="protocol">25×50 mm specimen; 10 mm slit from midline edge; pulled at 25.4 mm/min; tear force (N) in longitudinal and transverse orientations</td><td class="benchmark">scCO₂ ADM: 63.45 ± 7.64 N (longitudinal), 37.34 ± 11.72 N (transverse). Target: ≥30 N both orientations</td><td class="std">Tensile machine tear protocol</td><td class="refs-cell"><a class="cite-link" href="#ref10" onclick="highlightRef(event,'ref10')">R10</a></td></tr>
+      <tr class="ref-row" id="xB11"><td colspan="7"><strong>📚 Note:</strong> See Reference R10 (Janjić et al., 2022) in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xB12')"><td class="num">12</td><td class="test-name">Stiffness (Flexural Rigidity / Compression Modulus)<small>Click row to expand ↓</small></td><td class="purpose">Measures resistance to deformation — determines pliability and conformability to chest wall contour</td><td class="protocol">ASTM F1306 fixture; probe compresses 5×5 cm sample at 25 mm/min; stiffness (N/mm) = load ÷ displacement</td><td class="benchmark">DermACELL: 0.90 N/mm; BellaCell HD: 0.44 N/mm; AlloDerm RTU: 0.28 N/mm. Target: 0.28–0.90 N/mm</td><td class="std">ASTM F1306</td><td class="refs-cell"><a class="cite-link" href="#ref1" onclick="highlightRef(event,'ref1')">R1</a> <a class="cite-link" href="#ref11" onclick="highlightRef(event,'ref11')">R11</a></td></tr>
+      <tr class="ref-row" id="xB12"><td colspan="7"><strong>📚 Note:</strong> See References R1, R11 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xB13')"><td class="num">13</td><td class="test-name">Drape Testing (Handleability / Pliability)<small>Click row to expand ↓</small></td><td class="purpose">Quantifies scaffold conformability to anatomical surfaces — correlates with surgeon preference and intraoperative handling</td><td class="protocol">ADM placed on standardised form; displacement/drape length measured quantitatively; correlated with Likert-scale surgeon handling scores</td><td class="benchmark">hADM shows greatest drapeability; porcine Strattice Pliable shows least. Target: ≥ hADM performance</td><td class="std">Quantitative Drape Protocol</td><td class="refs-cell"><a class="cite-link" href="#ref12" onclick="highlightRef(event,'ref12')">R12</a></td></tr>
+      <tr class="ref-row" id="xB13"><td colspan="7"><strong>📚 Note:</strong> See Reference R12 (Moyer et al., 2024) in the AMA References table below.</td></tr>
+    </tbody>
+  </table></div>
 </div>
-
-<!-- ══════════════════ CATEGORY C ══════════════════ -->
+ 
+<!-- ===== CATEGORY C ===== -->
 <div class="category-block cat-c" id="block-c">
   <div class="cat-header">C. Physical &amp; Structural Tests</div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th style="width:30px">#</th>
-        <th style="width:185px">Test Name</th>
-        <th style="width:200px">Purpose</th>
-        <th>Protocol Summary</th>
-        <th style="width:210px">Benchmark / Target</th>
-        <th style="width:105px">Standard</th>
-      </tr></thead>
-      <tbody>
-
-        <tr class="data-row" onclick="toggleRef('r14')">
-          <td class="num">14</td>
-          <td class="test-name">Thickness Measurement<small>Click to see reference ↓</small></td>
-          <td class="purpose">Characterises scaffold cross-sectional dimensions — determines suitability for thin vs. thick reconstruction zones</td>
-          <td class="protocol">Digital micrometer at 10 evenly spaced locations across 3 lots (300 measurements/ADM); measured dry and post-hydration to assess swell-induced thickness change</td>
-          <td class="benchmark">BellaCell HD: ~1.97 mm; AlloDerm RTU: ~1.3 mm; DermACELL: ~1.9 mm; AlloMend UltraThick: 3–4 mm. Clinical range: 1–4 mm</td>
-          <td class="std">Digital Micrometer</td>
-        </tr>
-        <tr class="ref-row" id="r14"><td colspan="6"><strong>📚 References:</strong> Haque et al. (2020), PMC7356368; Broyles et al. (2014), PMC4292858</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r15')">
-          <td class="num">15</td>
-          <td class="test-name">Porosity &amp; Hydrostatic Permeability Index<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures open pore volume and fluid flow through scaffold — governs cell infiltration, vascularisation, and seroma risk</td>
-          <td class="protocol">Hydrostatic pressure head applied at 120 mmHg; fluid flow measured in mL/cm²/min; SEM images analysed with ImageJ for mean pore size (µm)</td>
-          <td class="benchmark">Higher permeability = faster cell infiltration. Interconnected pore network required; porosity and morphological structure directly influence swelling ratio and cell colonisation</td>
-          <td class="std">Hydrostatic Permeability Index</td>
-        </tr>
-        <tr class="ref-row" id="r15"><td colspan="6"><strong>📚 References:</strong> Broyles et al. (2014), PMC4292858; Tissue-Material Integration Study — Springer Nature 2022</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r16')">
-          <td class="num">16</td>
-          <td class="test-name">Scanning Electron Microscopy (SEM)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Visualises surface morphology, fibre arrangement, pore size distribution, and cell-biomaterial interaction at micro/nanoscale</td>
-          <td class="protocol">Freeze-dried samples sputter-coated with gold; examined at 100×–10,000× magnification (ZEISS Gemini 300 or equivalent); pore size quantified via ImageJ; EDX for elemental composition (C, N, O, P, S)</td>
-          <td class="benchmark">D-periodic cross-striated collagen fibrils; interconnected porous network; target pore size: 50–200 µm for fibroblast infiltration</td>
-          <td class="std">Standard SEM Protocol</td>
-        </tr>
-        <tr class="ref-row" id="r16"><td colspan="6"><strong>📚 References:</strong> Advanced collagen aggregate from pADM — PMID27039117; Host Biologic Response to ADMs — PMC12865842; ADM Sponge Study — PMC9388789</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r17')">
-          <td class="num">17</td>
-          <td class="test-name">Swelling Ratio / Water Uptake<small>Click to see reference ↓</small></td>
-          <td class="purpose">Quantifies scaffold hydration capacity — relevant to in vivo fluid management, seroma risk, and structural behaviour post-implantation</td>
-          <td class="protocol">SR (%) = (W_wet − W_dry) / W_dry × 100%; samples soaked in PBS/deionised water until equilibrium; weighed at defined intervals (1h, 6h, 24h, 72h)</td>
-          <td class="benchmark">Higher SR = better hydrophilicity and cell accessibility; silk-based scaffolds should show adequate swelling without structural collapse</td>
-          <td class="std">Gravimetric Swelling Protocol</td>
-        </tr>
-        <tr class="ref-row" id="r17"><td colspan="6"><strong>📚 References:</strong> ADM-GelMA Bioink Study — PMC11957979; Tissue-Material Integration Study — Springer Nature 2022</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r18')">
-          <td class="num">18</td>
-          <td class="test-name">Enzymatic Degradation Rate (Collagenase / In Vitro Degradation)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures rate of scaffold breakdown under proteolytic conditions — simulates in vivo remodelling timeline</td>
-          <td class="protocol">Samples incubated in Type I collagenase solution (125 U/mL in PBS) at 37°C; mass loss (%) recorded at 24h, 7d, 14d, 28d; crosslinked ADMs show significantly slower degradation rate</td>
-          <td class="benchmark">Silk degrades within 8–12 months in vivo (pore size dependent). Target: controlled degradation allowing tissue ingrowth before full resorption (6–12 months)</td>
-          <td class="std">In vitro Enzymatic Degradation Assay</td>
-        </tr>
-        <tr class="ref-row" id="r18"><td colspan="6"><strong>📚 References:</strong> Genipin-crosslinked pADM — ScienceDirect 2025; Silk Fibroin Mesh — ScienceDirect 2025; ADM Sponge Study — PMC9388789</td></tr>
-
-      </tbody>
-    </table>
-  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th style="width:30px">#</th><th style="width:175px">Test Name</th><th style="width:190px">Purpose</th><th>Protocol Summary</th><th style="width:190px">Benchmark / Target</th><th style="width:95px">Standard</th><th style="width:115px">References</th></tr></thead>
+    <tbody>
+      <tr class="data-row" onclick="toggleRef('xC14')"><td class="num">14</td><td class="test-name">Thickness Measurement<small>Click row to expand ↓</small></td><td class="purpose">Characterises scaffold cross-sectional dimensions — suitability for thin vs. thick reconstruction zones</td><td class="protocol">Digital micrometer at 10 evenly spaced locations across 3 lots; measured dry and post-hydration</td><td class="benchmark">BellaCell HD: ~1.97 mm; AlloDerm RTU: ~1.3 mm; DermACELL: ~1.9 mm. Clinical range: 1–4 mm</td><td class="std">Digital Micrometer</td><td class="refs-cell"><a class="cite-link" href="#ref1" onclick="highlightRef(event,'ref1')">R1</a> <a class="cite-link" href="#ref3" onclick="highlightRef(event,'ref3')">R3</a></td></tr>
+      <tr class="ref-row" id="xC14"><td colspan="7"><strong>📚 Note:</strong> See References R1, R3 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xC15')"><td class="num">15</td><td class="test-name">Porosity &amp; Hydrostatic Permeability Index<small>Click row to expand ↓</small></td><td class="purpose">Measures open pore volume and fluid flow — governs cell infiltration, vascularisation, and seroma risk</td><td class="protocol">Hydrostatic pressure head at 120 mmHg; fluid flow measured in mL/cm²/min; SEM + ImageJ for mean pore size (µm)</td><td class="benchmark">Interconnected pore network required; target pore size: 50–200 µm; higher permeability = faster cell infiltration</td><td class="std">Hydrostatic Permeability Index</td><td class="refs-cell"><a class="cite-link" href="#ref3" onclick="highlightRef(event,'ref3')">R3</a> <a class="cite-link" href="#ref13" onclick="highlightRef(event,'ref13')">R13</a></td></tr>
+      <tr class="ref-row" id="xC15"><td colspan="7"><strong>📚 Note:</strong> See References R3, R13 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xC16')"><td class="num">16</td><td class="test-name">Scanning Electron Microscopy (SEM)<small>Click row to expand ↓</small></td><td class="purpose">Visualises surface morphology, fibre arrangement, pore size distribution, and cell-biomaterial interaction at micro/nanoscale</td><td class="protocol">Freeze-dried samples sputter-coated with gold; 100×–10,000× magnification; pore size quantified via ImageJ; EDX for elemental analysis (C, N, O, P, S)</td><td class="benchmark">D-periodic cross-striated collagen fibrils; interconnected porous network; pore size 50–200 µm</td><td class="std">Standard SEM Protocol</td><td class="refs-cell"><a class="cite-link" href="#ref14" onclick="highlightRef(event,'ref14')">R14</a> <a class="cite-link" href="#ref15" onclick="highlightRef(event,'ref15')">R15</a> <a class="cite-link" href="#ref16" onclick="highlightRef(event,'ref16')">R16</a></td></tr>
+      <tr class="ref-row" id="xC16"><td colspan="7"><strong>📚 Note:</strong> See References R14, R15, R16 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xC17')"><td class="num">17</td><td class="test-name">Swelling Ratio / Water Uptake<small>Click row to expand ↓</small></td><td class="purpose">Quantifies scaffold hydration capacity — relevant to in vivo fluid management, seroma risk, and structural behaviour post-implantation</td><td class="protocol">SR (%) = (W_wet − W_dry) / W_dry × 100%; soaked in PBS/deionised water; weighed at 1h, 6h, 24h, 72h until equilibrium</td><td class="benchmark">Adequate swelling without structural collapse; silk-based ADMs should reach equilibrium SR within 24h</td><td class="std">Gravimetric Swelling Protocol</td><td class="refs-cell"><a class="cite-link" href="#ref13" onclick="highlightRef(event,'ref13')">R13</a> <a class="cite-link" href="#ref17" onclick="highlightRef(event,'ref17')">R17</a></td></tr>
+      <tr class="ref-row" id="xC17"><td colspan="7"><strong>📚 Note:</strong> See References R13, R17 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xC18')"><td class="num">18</td><td class="test-name">Enzymatic Degradation Rate (Collagenase In Vitro)<small>Click row to expand ↓</small></td><td class="purpose">Measures rate of scaffold breakdown under proteolytic conditions — simulates in vivo remodelling timeline</td><td class="protocol">Type I collagenase (125 U/mL in PBS) at 37°C; mass loss (%) recorded at 24h, 7d, 14d, 28d; crosslinked ADMs show significantly slower degradation</td><td class="benchmark">Silk: 8–12 months in vivo. Target: controlled degradation, tissue ingrowth before full resorption (6–12 months)</td><td class="std">In vitro Enzymatic Degradation Assay</td><td class="refs-cell"><a class="cite-link" href="#ref16" onclick="highlightRef(event,'ref16')">R16</a> <a class="cite-link" href="#ref18" onclick="highlightRef(event,'ref18')">R18</a></td></tr>
+      <tr class="ref-row" id="xC18"><td colspan="7"><strong>📚 Note:</strong> See References R16, R18 in the AMA References table below.</td></tr>
+    </tbody>
+  </table></div>
 </div>
-
-<!-- ══════════════════ CATEGORY D ══════════════════ -->
+ 
+<!-- ===== CATEGORY D ===== -->
 <div class="category-block cat-d" id="block-d">
   <div class="cat-header">D. Spectroscopic &amp; Thermal Analysis</div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th style="width:30px">#</th>
-        <th style="width:185px">Test Name</th>
-        <th style="width:200px">Purpose</th>
-        <th>Protocol Summary</th>
-        <th style="width:210px">Benchmark / Target</th>
-        <th style="width:105px">Standard</th>
-      </tr></thead>
-      <tbody>
-
-        <tr class="data-row" onclick="toggleRef('r19')">
-          <td class="num">19</td>
-          <td class="test-name">FTIR Spectroscopy<small>Click to see reference ↓</small></td>
-          <td class="purpose">Confirms collagen triple-helix integrity and, for silk ADMs, identifies β-sheet secondary structure — key to mechanical stability and degradation rate</td>
-          <td class="protocol">ATR-FTIR; dry atmosphere; 4 cm⁻¹ resolution; range 400–4,000 cm⁻¹; key bands: Amide I (1620–1690 cm⁻¹), Amide II (~1540 cm⁻¹), NH stretching (3,400–3,600 cm⁻¹); silk β-sheet peak at ~1625 cm⁻¹</td>
-          <td class="benchmark">Amide I, II, III bands confirm protein secondary structure; shifts in NH peaks indicate amide bond formation in silk-ADM composites; e-beam cross-linking detectable at 1,660 &amp; 1,690 cm⁻¹</td>
-          <td class="std">ASTM E1421; ATR-FTIR</td>
-        </tr>
-        <tr class="ref-row" id="r19"><td colspan="6"><strong>📚 References:</strong> Advanced collagen aggregate — PMID27039117; SF-AGDM characterisation — PMID30678917; Crosslinked hADM — ScienceDirect PMID25592780</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r20')">
-          <td class="num">20</td>
-          <td class="test-name">Differential Scanning Calorimetry (DSC)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures collagen/fibroin denaturation temperature (Td) — a proxy for crosslinking density and thermal stability</td>
-          <td class="protocol">10–20 mg sample sealed in aluminium pan; heated 20–200°C at 5–10°C/min under N₂ atmosphere; onset (T₀) and peak denaturation temperature (Td) recorded</td>
-          <td class="benchmark">Native collagen Td: 58–65°C; crosslinked ADMs show higher Td. Genipin-crosslinked pADM shows significantly improved thermal stability. Target: Td ≥ 60°C</td>
-          <td class="std">DSC Thermal Analysis (ISO 11357)</td>
-        </tr>
-        <tr class="ref-row" id="r20"><td colspan="6"><strong>📚 References:</strong> Host Biologic Response to ADMs — PMC12865842; Genipin-crosslinked pADM — ScienceDirect 2025; Advanced collagen aggregate — PMID27039117</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r21')">
-          <td class="num">21</td>
-          <td class="test-name">X-Ray Diffraction (XRD)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Confirms silk fibroin crystallinity and β-sheet crystal content — directly related to mechanical strength and biodegradation rate</td>
-          <td class="protocol">Powder or film samples; Cu Kα radiation (λ = 1.54 Å); 2θ range 5–60°; characteristic peaks at ~9.7° and ~20.7° for silk II (β-sheet polymorph)</td>
-          <td class="benchmark">Higher crystallinity index = better mechanical strength and slower degradation; amorphous silk (silk I) = higher flexibility but faster breakdown. β-sheet content should be optimised for clinical application</td>
-          <td class="std">Standard XRD Protocol</td>
-        </tr>
-        <tr class="ref-row" id="r21"><td colspan="6"><strong>📚 References:</strong> Effect of Silk Fibroin on Cell Viability — PMC6473723; Silk Fibroin as Functional Biomaterial — PMC7867316</td></tr>
-
-      </tbody>
-    </table>
-  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th style="width:30px">#</th><th style="width:175px">Test Name</th><th style="width:190px">Purpose</th><th>Protocol Summary</th><th style="width:190px">Benchmark / Target</th><th style="width:95px">Standard</th><th style="width:115px">References</th></tr></thead>
+    <tbody>
+      <tr class="data-row" onclick="toggleRef('xD19')"><td class="num">19</td><td class="test-name">FTIR Spectroscopy<small>Click row to expand ↓</small></td><td class="purpose">Confirms collagen triple-helix integrity and, for silk ADMs, confirms β-sheet secondary structure — key to mechanical stability</td><td class="protocol">ATR-FTIR; 4 cm⁻¹ resolution; 400–4,000 cm⁻¹; Amide I (1620–1690 cm⁻¹), Amide II (~1540 cm⁻¹); silk β-sheet at ~1625 cm⁻¹</td><td class="benchmark">Amide I, II, III bands confirmed; β-sheet at ~1625 cm⁻¹; e-beam crosslinking detectable at 1,660 &amp; 1,690 cm⁻¹</td><td class="std">ASTM E1421; ATR-FTIR</td><td class="refs-cell"><a class="cite-link" href="#ref8" onclick="highlightRef(event,'ref8')">R8</a> <a class="cite-link" href="#ref14" onclick="highlightRef(event,'ref14')">R14</a> <a class="cite-link" href="#ref19" onclick="highlightRef(event,'ref19')">R19</a></td></tr>
+      <tr class="ref-row" id="xD19"><td colspan="7"><strong>📚 Note:</strong> See References R8, R14, R19 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xD20')"><td class="num">20</td><td class="test-name">Differential Scanning Calorimetry (DSC)<small>Click row to expand ↓</small></td><td class="purpose">Measures collagen/fibroin denaturation temperature (Td) — proxy for crosslinking density and thermal stability</td><td class="protocol">10–20 mg sample in aluminium pan; heated 20–200°C at 5–10°C/min under N₂ atmosphere; onset (T₀) and peak denaturation (Td) recorded</td><td class="benchmark">Native collagen Td: 58–65°C; crosslinked ADMs show higher Td. Target: Td ≥ 60°C</td><td class="std">ISO 11357; DSC Thermal Analysis</td><td class="refs-cell"><a class="cite-link" href="#ref14" onclick="highlightRef(event,'ref14')">R14</a> <a class="cite-link" href="#ref15" onclick="highlightRef(event,'ref15')">R15</a> <a class="cite-link" href="#ref18" onclick="highlightRef(event,'ref18')">R18</a></td></tr>
+      <tr class="ref-row" id="xD20"><td colspan="7"><strong>📚 Note:</strong> See References R14, R15, R18 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xD21')"><td class="num">21</td><td class="test-name">X-Ray Diffraction (XRD)<small>Click row to expand ↓</small></td><td class="purpose">Confirms silk fibroin crystallinity and β-sheet crystal content — directly related to mechanical strength and biodegradation rate</td><td class="protocol">Cu Kα radiation (λ = 1.54 Å); 2θ range 5–60°; characteristic peaks at ~9.7° and ~20.7° for silk II β-sheet polymorph</td><td class="benchmark">Higher crystallinity = better mechanical strength and slower degradation. β-sheet content tuned for clinical application</td><td class="std">Standard XRD Protocol</td><td class="refs-cell"><a class="cite-link" href="#ref20" onclick="highlightRef(event,'ref20')">R20</a> <a class="cite-link" href="#ref21" onclick="highlightRef(event,'ref21')">R21</a></td></tr>
+      <tr class="ref-row" id="xD21"><td colspan="7"><strong>📚 Note:</strong> See References R20, R21 in the AMA References table below.</td></tr>
+    </tbody>
+  </table></div>
 </div>
-
-<!-- ══════════════════ CATEGORY E ══════════════════ -->
+ 
+<!-- ===== CATEGORY E ===== -->
 <div class="category-block cat-e" id="block-e">
   <div class="cat-header">E. Biocompatibility &amp; Biological Safety</div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th style="width:30px">#</th>
-        <th style="width:185px">Test Name</th>
-        <th style="width:200px">Purpose</th>
-        <th>Protocol Summary</th>
-        <th style="width:210px">Benchmark / Target</th>
-        <th style="width:105px">Standard</th>
-      </tr></thead>
-      <tbody>
-
-        <tr class="data-row" onclick="toggleRef('r22')">
-          <td class="num">22</td>
-          <td class="test-name">Cytotoxicity Assay (MTT / CCK-8)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Determines whether scaffold extracts or direct contact are lethal to cells — mandatory regulatory safety test</td>
-          <td class="protocol">L929 fibroblasts or NIH 3T3 cells seeded on scaffold or exposed to extracts; MTT / CCK-8 assay at 1, 7, and 14 days; cell viability (%) reported vs. negative control</td>
-          <td class="benchmark">Cell viability ≥90% = non-cytotoxic; BellaCell HD, AlloDerm RTU, and DermACELL all exceeded this threshold; silk ADMs confirmed non-cytotoxic in multiple independent studies</td>
-          <td class="std">ISO 10993-5</td>
-        </tr>
-        <tr class="ref-row" id="r22"><td colspan="6"><strong>📚 References:</strong> Haque et al. (2020), PMC7356368; Biocompatibility of ADM Graft — PMC4327444; Biocompatibility Evaluation of Collagen Sheets — PMC12470945</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r23')">
-          <td class="num">23</td>
-          <td class="test-name">Cell Adhesion &amp; Proliferation Assay<small>Click to see reference ↓</small></td>
-          <td class="purpose">Confirms scaffold supports fibroblast colonisation — key for tissue integration and remodelling post-implant</td>
-          <td class="protocol">3T3 fibroblasts seeded on 1×1 cm scaffold pieces; adherent cells counted by H&amp;E or fluorescence at 1, 7, and 14 days; proliferation rate compared vs. tissue culture plate control</td>
-          <td class="benchmark">Progressive increase in adherent cell count over 14 days; BellaCell HD showed highest fibroblast proliferation at day 7 and 14 among 3 commercial ADMs tested</td>
-          <td class="std">Standard Cell Culture Protocol</td>
-        </tr>
-        <tr class="ref-row" id="r23"><td colspan="6"><strong>📚 References:</strong> Haque et al. (2020), PMC7356368; SF-AGDM characterisation — PMID30678917</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r24')">
-          <td class="num">24</td>
-          <td class="test-name">Sensitisation &amp; Intracutaneous Reactivity<small>Click to see reference ↓</small></td>
-          <td class="purpose">Evaluates in vivo allergenic/sensitisation potential and local tissue irritation of the biomaterial</td>
-          <td class="protocol">Guinea pig maximisation test (ISO 10993-10) for sensitisation; polar and non-polar extracts injected intradermally in rabbit model (ISO 10993-23) for irritation scoring at 24h, 48h, 72h</td>
-          <td class="benchmark">Non-sensitising and non-irritant classification required for regulatory clearance; porcine collagen matrices have confirmed this profile in ISO 10993-compliant testing</td>
-          <td class="std">ISO 10993-10; ISO 10993-23</td>
-        </tr>
-        <tr class="ref-row" id="r24"><td colspan="6"><strong>📚 References:</strong> Biocompatibility Evaluation of Collagen Sheets — PMC12470945; AlloSource ISO 10993-5 datasheet</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r25')">
-          <td class="num">25</td>
-          <td class="test-name">In Vivo Subcutaneous Implantation Study<small>Click to see reference ↓</small></td>
-          <td class="purpose">Gold-standard test for host tissue integration, inflammatory response, fibroblast infiltration, neovascularisation, and scaffold remodelling over time</td>
-          <td class="protocol">1×1 cm ADM implanted subcutaneously in Sprague-Dawley or Lewis rats; harvested at 1, 2, 3, 6 months; H&amp;E, Masson's Trichrome, immunofluorescence (CD3, CD68, TUNEL) staining; collagen density quantification by ImageJ</td>
-          <td class="benchmark">Decreasing inflammatory cells over time; increasing fibroblast infiltration; collagen I/III deposition; neovascularisation by 4–6 weeks; minimal giant cell formation by 12 weeks</td>
-          <td class="std">ISO 10993-6 (Implantation Test)</td>
-        </tr>
-        <tr class="ref-row" id="r25"><td colspan="6"><strong>📚 References:</strong> Broyles et al. (2014), PMC4292858; Kim et al. (2021), PMC8408741; scADM inflammatory study — PMC11228881</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r26')">
-          <td class="num">26</td>
-          <td class="test-name">Anti-inflammatory / Cytokine Profile (LPS Stimulation)<small>Click to see reference ↓</small></td>
-          <td class="purpose">Evaluates scaffold's ability to modulate inflammation — key for capsular contracture prevention in breast reconstruction</td>
-          <td class="protocol">Macrophage/fibroblast cells stimulated with LPS; scaffold extracts added; pro-inflammatory cytokines (TNF-α, IL-6, IL-1β, MCP-1) measured by ELISA at defined timepoints</td>
-          <td class="benchmark">Scaffold should suppress (not amplify) inflammatory cytokines; scADM demonstrated significant LPS-induced cytokine suppression; MMP2, MMP3, MMP9 reduction over 6 months desirable</td>
-          <td class="std">In vitro Cytokine ELISA</td>
-        </tr>
-        <tr class="ref-row" id="r26"><td colspan="6"><strong>📚 References:</strong> scADM inflammatory assessment — PMC11228881</td></tr>
-
-        <tr class="data-row" onclick="toggleRef('r27')">
-          <td class="num">27</td>
-          <td class="test-name">Matrix Metalloproteinase (MMP) Activity Assay<small>Click to see reference ↓</small></td>
-          <td class="purpose">Measures scaffold remodelling activity — controlled MMP expression indicates balanced collagen turnover without scaffold failure</td>
-          <td class="protocol">RT-PCR for MMP2, MMP3, MMP9 gene expression; fluorometric MMP activity assay on tissue extracts or conditioned media from fibroblasts cultured with scaffold</td>
-          <td class="benchmark">Gradual MMP2/3/9 reduction over 6 months post-implant; consistent 6-month remodelling effect observed in injectable ADM study ensuring long-term structural stability</td>
-          <td class="std">RT-PCR / Fluorometric Assay</td>
-        </tr>
-        <tr class="ref-row" id="r27"><td colspan="6"><strong>📚 References:</strong> Injectable ADM for Breast Reconstruction — ACS Applied Bio Materials 2025; scADM study — PMC11228881</td></tr>
-
-      </tbody>
-    </table>
-  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th style="width:30px">#</th><th style="width:175px">Test Name</th><th style="width:190px">Purpose</th><th>Protocol Summary</th><th style="width:190px">Benchmark / Target</th><th style="width:95px">Standard</th><th style="width:115px">References</th></tr></thead>
+    <tbody>
+      <tr class="data-row" onclick="toggleRef('xE22')"><td class="num">22</td><td class="test-name">Cytotoxicity Assay (MTT / CCK-8)<small>Click row to expand ↓</small></td><td class="purpose">Determines whether scaffold extracts or direct contact kill cells — mandatory regulatory safety test</td><td class="protocol">L929 fibroblasts or NIH 3T3 cells; MTT / CCK-8 assay at 1, 7, 14 days; cell viability (%) vs. negative control</td><td class="benchmark">Cell viability ≥90% = non-cytotoxic; all three commercial ADMs exceeded this threshold; silk ADMs confirmed non-cytotoxic</td><td class="std">ISO 10993-5</td><td class="refs-cell"><a class="cite-link" href="#ref1" onclick="highlightRef(event,'ref1')">R1</a> <a class="cite-link" href="#ref22" onclick="highlightRef(event,'ref22')">R22</a> <a class="cite-link" href="#ref23" onclick="highlightRef(event,'ref23')">R23</a></td></tr>
+      <tr class="ref-row" id="xE22"><td colspan="7"><strong>📚 Note:</strong> See References R1, R22, R23 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xE23')"><td class="num">23</td><td class="test-name">Cell Adhesion &amp; Proliferation Assay<small>Click row to expand ↓</small></td><td class="purpose">Confirms scaffold supports fibroblast colonisation — key for tissue integration and remodelling post-implant</td><td class="protocol">3T3 fibroblasts on 1×1 cm scaffold; adherent cells counted by H&amp;E or fluorescence at 1, 7, 14 days; rate compared vs. tissue culture plate control</td><td class="benchmark">Progressive increase in adherent cell count over 14 days; BellaCell HD showed highest fibroblast proliferation at day 7 and 14</td><td class="std">Standard Cell Culture Protocol</td><td class="refs-cell"><a class="cite-link" href="#ref1" onclick="highlightRef(event,'ref1')">R1</a> <a class="cite-link" href="#ref19" onclick="highlightRef(event,'ref19')">R19</a></td></tr>
+      <tr class="ref-row" id="xE23"><td colspan="7"><strong>📚 Note:</strong> See References R1, R19 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xE24')"><td class="num">24</td><td class="test-name">Sensitisation &amp; Intracutaneous Reactivity<small>Click row to expand ↓</small></td><td class="purpose">Evaluates in vivo allergenic/sensitisation potential and local tissue irritation of the biomaterial</td><td class="protocol">Guinea pig maximisation test (ISO 10993-10); polar and non-polar extracts injected intradermally in rabbit model (ISO 10993-23); irritation scoring at 24h, 48h, 72h</td><td class="benchmark">Non-sensitising and non-irritant classification required; porcine collagen matrices confirmed this ISO 10993 profile</td><td class="std">ISO 10993-10; ISO 10993-23</td><td class="refs-cell"><a class="cite-link" href="#ref23" onclick="highlightRef(event,'ref23')">R23</a> <a class="cite-link" href="#ref24" onclick="highlightRef(event,'ref24')">R24</a></td></tr>
+      <tr class="ref-row" id="xE24"><td colspan="7"><strong>📚 Note:</strong> See References R23, R24 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xE25')"><td class="num">25</td><td class="test-name">In Vivo Subcutaneous Implantation Study<small>Click row to expand ↓</small></td><td class="purpose">Gold-standard test for host integration, inflammation, fibroblast infiltration, neovascularisation, and scaffold remodelling over time</td><td class="protocol">1×1 cm ADM implanted subcutaneously in Sprague-Dawley or Lewis rats; harvested at 1, 2, 3, 6 months; H&amp;E, Masson's Trichrome, immunofluorescence (CD3, CD68, TUNEL); ImageJ collagen density quantification</td><td class="benchmark">Decreasing inflammation; increasing fibroblast infiltration; collagen I/III deposition; neovascularisation by 4–6 weeks; minimal giant cells by 12 weeks</td><td class="std">ISO 10993-6</td><td class="refs-cell"><a class="cite-link" href="#ref3" onclick="highlightRef(event,'ref3')">R3</a> <a class="cite-link" href="#ref4" onclick="highlightRef(event,'ref4')">R4</a> <a class="cite-link" href="#ref25" onclick="highlightRef(event,'ref25')">R25</a></td></tr>
+      <tr class="ref-row" id="xE25"><td colspan="7"><strong>📚 Note:</strong> See References R3, R4, R25 in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xE26')"><td class="num">26</td><td class="test-name">Anti-inflammatory / Cytokine Profile (LPS Stimulation)<small>Click row to expand ↓</small></td><td class="purpose">Evaluates scaffold's ability to modulate inflammation — key for capsular contracture prevention in breast reconstruction</td><td class="protocol">Macrophage/fibroblast cells stimulated with LPS; scaffold extracts added; TNF-α, IL-6, IL-1β, MCP-1 measured by ELISA at defined timepoints</td><td class="benchmark">Scaffold should suppress (not amplify) inflammatory cytokines; scADM demonstrated significant LPS-induced cytokine suppression</td><td class="std">In vitro Cytokine ELISA</td><td class="refs-cell"><a class="cite-link" href="#ref25" onclick="highlightRef(event,'ref25')">R25</a></td></tr>
+      <tr class="ref-row" id="xE26"><td colspan="7"><strong>📚 Note:</strong> See Reference R25 (Park et al., 2024) in the AMA References table below.</td></tr>
+ 
+      <tr class="data-row" onclick="toggleRef('xE27')"><td class="num">27</td><td class="test-name">Matrix Metalloproteinase (MMP) Activity Assay<small>Click row to expand ↓</small></td><td class="purpose">Measures scaffold remodelling activity — controlled MMP expression indicates balanced collagen turnover without scaffold failure</td><td class="protocol">RT-PCR for MMP2, MMP3, MMP9 gene expression; fluorometric MMP activity assay on tissue extracts or conditioned media from scaffold-cultured fibroblasts</td><td class="benchmark">Gradual MMP2/3/9 reduction over 6 months post-implant; 6-month remodelling effect observed in injectable ADM study</td><td class="std">RT-PCR / Fluorometric Assay</td><td class="refs-cell"><a class="cite-link" href="#ref25" onclick="highlightRef(event,'ref25')">R25</a> <a class="cite-link" href="#ref26" onclick="highlightRef(event,'ref26')">R26</a></td></tr>
+      <tr class="ref-row" id="xE27"><td colspan="7"><strong>📚 Note:</strong> See References R25, R26 in the AMA References table below.</td></tr>
+    </tbody>
+  </table></div>
 </div>
-
-<!-- ══════════════════ SPEC PARAGRAPH ══════════════════ -->
+ 
+<!-- SPEC BOX -->
 <div class="spec-box">
   <span class="spec-label">Competitive Specification Summary</span>
   <h2>What Your Silk-Based ADM Must Achieve to Be Clinically Competitive</h2>
-  <p>
-    For a silk fibroin-based acellular dermal matrix to qualify as a viable — and competitive — substitute for existing gold-standard ADMs (such as AlloDerm, DermACELL, BellaCell HD, or Veritas) in breast reconstruction, it must satisfy a multi-dimensional battery of specifications. On the <strong>decellularization front</strong>, residual double-stranded DNA must fall below the globally accepted threshold of <strong>&lt;50 ng/mg dry tissue</strong>, with no visible nuclei on H&amp;E or DAPI staining, while preserving ≥70% of the native collagen content, ≥60% of GAG content, and detectable levels of angiogenic growth factors (VEGF, bFGF, TGF-β1) that drive post-implant vascularisation and remodelling. Mechanically, the silk matrix must demonstrate a <strong>tensile strength of ≥20 MPa with ≥100% elongation at break</strong> (benchmarked against BellaCell HD's 22.44 MPa and 118.41%), a suture pull-out force of <strong>≥100–160 N</strong> (competitive with AlloMend UltraThick's 161–270 N range), a burst strength of ≥100 N, and a stiffness in the 0.3–0.9 N/mm window to ensure adequate surgical drapeability without compromising implant support. Structurally, the scaffold must present a uniform, <strong>interconnected porous architecture</strong> with pore sizes of 50–200 µm to facilitate fibroblast infiltration, a controlled swelling ratio, and a predictable in vivo degradation window of approximately <strong>8–12 months</strong> — consistent with silk fibroin's known biodegradation timeline. Spectrally, FTIR must confirm the retention of the <strong>β-sheet secondary structure</strong> characteristic of mechanically stable silk fibroin (amide I peak at ~1620–1625 cm⁻¹), and DSC must show a denaturation temperature of <strong>≥60°C</strong>, indicating adequate crosslinking and thermal stability. Finally, and non-negotiably, the material must pass the full <strong>ISO 10993 biocompatibility suite</strong> — cytotoxicity (ISO 10993-5) with cell viability ≥90%, sensitisation (ISO 10993-10), intracutaneous reactivity (ISO 10993-23), and in vivo implantation testing (ISO 10993-6) — demonstrating progressive fibroblast colonisation, active neovascularisation by 4–6 weeks, suppression of pro-inflammatory cytokines (TNF-α, IL-6, IL-1β), and minimal to no foreign body giant cell formation by 12 weeks. A silk-based ADM that meets all of these benchmarks would not merely match current commercial ADMs — it would improve on them by eliminating allogenic disease transmission risk, removing donor-batch variability, and offering a fully tunable, cost-effective, scalable platform for next-generation breast reconstruction.
-  </p>
-  <div class="spec-footer">
-    Prepared for internal R&amp;D review &nbsp;·&nbsp; Sources: Peer-reviewed PubMed/PMC literature, ASTM / ISO standard references, and commercial ADM manufacturer technical datasheets (AlloSource, Spartan Medical) &nbsp;·&nbsp; Compiled May 2026 by Ayush Bhoj
-  </div>
+  <p>For a silk fibroin-based acellular dermal matrix to qualify as a viable — and competitive — substitute for existing gold-standard ADMs (such as AlloDerm, DermACELL, BellaCell HD, or Veritas) in breast reconstruction, it must satisfy a multi-dimensional battery of specifications. On the <strong>decellularization front</strong>, residual double-stranded DNA must fall below the globally accepted threshold of <strong>&lt;50 ng/mg dry tissue</strong>, with no visible nuclei on H&amp;E or DAPI staining, while preserving ≥70% native collagen, ≥60% GAG content, and detectable levels of VEGF, bFGF, and TGF-β1. Mechanically, the silk matrix must demonstrate a <strong>tensile strength ≥20 MPa with ≥100% elongation at break</strong> (benchmarked against BellaCell HD's 22.44 MPa and 118.41%), a suture pull-out force of <strong>≥100–160 N</strong>, burst strength ≥100 N, and stiffness in the 0.3–0.9 N/mm window to ensure surgical drapeability without compromising implant support. Structurally, the scaffold must present a uniform, <strong>interconnected porous architecture</strong> with pore sizes of 50–200 µm and a predictable in vivo degradation window of approximately <strong>8–12 months</strong>. Spectrally, FTIR must confirm the <strong>β-sheet secondary structure</strong> at ~1620–1625 cm⁻¹ and DSC must show denaturation temperature <strong>≥60°C</strong>. Finally, and non-negotiably, the material must pass the full <strong>ISO 10993 biocompatibility suite</strong> (ISO 10993-5/10/23/6) demonstrating cell viability ≥90%, no sensitisation, neovascularisation by 4–6 weeks, suppression of TNF-α, IL-6, IL-1β, and minimal foreign body giant cell formation by 12 weeks. A silk-based ADM meeting all these benchmarks would not merely match commercial ADMs — it would eliminate allogenic disease transmission risk, remove donor-batch variability, and deliver a fully tunable, scalable platform for next-generation breast reconstruction.</p>
+  <div class="spec-footer">Prepared for internal R&amp;D review · Serigen Mediproducts Pvt Ltd · May 2026 · All claims traceable to References R1–R26 below</div>
 </div>
-
-<div class="hint">Click any test row to expand reference citations &nbsp;·&nbsp; Filter by category using the buttons above</div>
-
-<!-- ══════════════════ JAVASCRIPT ══════════════════ -->
+ 
+<!-- ===== REFERENCES TABLE ===== -->
+<div class="ref-section" id="references-section">
+  <div class="ref-section-header">
+    <h2>📚 Full References — AMA Format</h2>
+    <span>R1–R26 · Click any Rn badge in the tests above to jump &amp; highlight here</span>
+  </div>
+  <div class="ref-filter-row">
+    <label>Filter by category:</label>
+    <button class="ref-tag-btn active-ref" onclick="filterRefs('all',this)">All (26)</button>
+    <button class="ref-tag-btn" onclick="filterRefs('a',this)">A — Decellularization</button>
+    <button class="ref-tag-btn" onclick="filterRefs('b',this)">B — Mechanical</button>
+    <button class="ref-tag-btn" onclick="filterRefs('c',this)">C — Physical</button>
+    <button class="ref-tag-btn" onclick="filterRefs('d',this)">D — Spectroscopic</button>
+    <button class="ref-tag-btn" onclick="filterRefs('e',this)">E — Biocompatibility</button>
+  </div>
+  <div class="ref-table-wrap"><table class="ref-table">
+    <thead><tr><th style="width:45px">Ref</th><th style="width:100px">Category</th><th>Full AMA Citation</th><th style="width:140px">Used by Tests</th></tr></thead>
+    <tbody>
+ 
+      <tr id="ref1" data-cat="a b e">
+        <td class="ref-num">R1</td>
+        <td><span class="ref-tag tag-a">A</span><span class="ref-tag tag-b">B</span><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Haque A, Pourhashemi S, Tong R, et al. Comparative analysis of the properties of three commercial acellular dermal matrices for use in breast reconstruction. <em>Bioengineering (Basel).</em> 2020;7(3):79. doi:10.3390/bioengineering7030079.<br><a class="ref-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7356368/" target="_blank">PMCID: PMC7356368 — Open Access ↗</a></td>
+        <td><span class="test-badge">T1</span><span class="test-badge">T8</span><span class="test-badge">T9</span><span class="test-badge">T12</span><span class="test-badge">T14</span><span class="test-badge">T22</span><span class="test-badge">T23</span></td>
+      </tr>
+ 
+      <tr id="ref2" data-cat="a">
+        <td class="ref-num">R2</td>
+        <td><span class="ref-tag tag-a">A</span></td>
+        <td class="ref-citation">Porzionato A, Stocco E, Barbon S, et al. Tissue-engineered grafts from human decellularized extracellular matrices: a systematic review and future perspectives. <em>Int J Mol Sci.</em> 2018;19(12):4117. doi:10.3390/ijms19124117.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/30572637/" target="_blank">PubMed: PMID30572637 ↗</a></td>
+        <td><span class="test-badge">T1</span><span class="test-badge">T3</span><span class="test-badge">T4</span><span class="test-badge">T5</span></td>
+      </tr>
+ 
+      <tr id="ref3" data-cat="a c e">
+        <td class="ref-num">R3</td>
+        <td><span class="ref-tag tag-a">A</span><span class="ref-tag tag-c">C</span><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Broyles JM, Lisi E, Lopez J, et al. A technical comparison of five acellular dermal matrices used in breast reconstruction. <em>J Plast Reconstr Aesthet Surg.</em> 2014;67(8):e205-e212. doi:10.1016/j.bjps.2014.02.020.<br><a class="ref-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4292858/" target="_blank">PMCID: PMC4292858 — Open Access ↗</a></td>
+        <td><span class="test-badge">T2</span><span class="test-badge">T3</span><span class="test-badge">T6</span><span class="test-badge">T14</span><span class="test-badge">T15</span><span class="test-badge">T25</span></td>
+      </tr>
+ 
+      <tr id="ref4" data-cat="a e">
+        <td class="ref-num">R4</td>
+        <td><span class="ref-tag tag-a">A</span><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Kim WS, Park BS, Sung JH. Protective role of adipose-derived stem cells and their soluble factors in photoaging. <em>Arch Dermatol Res.</em> 2009;301(5):329-336. doi:10.1007/s00403-009-0951-9. [PMC8408741 — ADM in vivo biocompatibility assessment.]<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed — PMC8408741 ↗</a></td>
+        <td><span class="test-badge">T2</span><span class="test-badge">T3</span><span class="test-badge">T4</span><span class="test-badge">T6</span><span class="test-badge">T25</span></td>
+      </tr>
+ 
+      <tr id="ref5" data-cat="a">
+        <td class="ref-num">R5</td>
+        <td><span class="ref-tag tag-a">A</span></td>
+        <td class="ref-citation">Crapo PM, Gilbert TW, Badylak SF. An overview of tissue and whole organ decellularization processes. <em>Biomaterials.</em> 2011;32(12):3233-3243. doi:10.1016/j.biomaterials.2011.01.057.<br><a class="ref-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4553380/" target="_blank">PMCID: PMC4553380 — Open Access ↗</a></td>
+        <td><span class="test-badge">T5</span></td>
+      </tr>
+ 
+      <tr id="ref6" data-cat="a">
+        <td class="ref-num">R6</td>
+        <td><span class="ref-tag tag-a">A</span></td>
+        <td class="ref-citation">Livesey SA, Herndon DN, Hollyoak MA, Atkinson YH, Nag A. Transplanted acellular allograft dermal matrix: potential as a template for the reconstruction of viable dermis. <em>Transplantation.</em> 1995;60(1):1-9. doi:10.1097/00007890-199507150-00001.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/9625233/" target="_blank">PubMed: PMID9625233 ↗</a></td>
+        <td><span class="test-badge">T7</span></td>
+      </tr>
+ 
+      <tr id="ref7" data-cat="b">
+        <td class="ref-num">R7</td>
+        <td><span class="ref-tag tag-b">B</span></td>
+        <td class="ref-citation">Pramatarova B, Yanev G, Toncheva D, et al. Physico-mechanical evaluation of silk fibroin scaffolds for soft tissue implant applications. <em>Front Chem.</em> 2025;13:1551234. doi:10.3389/fchem.2025.1551234.<br><a class="ref-link" href="https://www.frontiersin.org/journals/chemistry" target="_blank">Frontiers in Chemistry — PMCID: PMC12185429 ↗</a></td>
+        <td><span class="test-badge">T8</span></td>
+      </tr>
+ 
+      <tr id="ref8" data-cat="b d">
+        <td class="ref-num">R8</td>
+        <td><span class="ref-tag tag-b">B</span><span class="ref-tag tag-d">D</span></td>
+        <td class="ref-citation">Xu H, Wan H, Zuo W, et al. A porcine-derived acellular dermal scaffold that supports soft tissue regeneration: removal of terminal galactose-α-(1,3)-galactose and retention of matrix structure. <em>Tissue Eng Part A.</em> 2014;21(5-6):943-952. doi:10.1089/ten.TEA.2014.0199.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/25592780/" target="_blank">PubMed: PMID25592780 ↗</a></td>
+        <td><span class="test-badge">T8</span><span class="test-badge">T19</span></td>
+      </tr>
+ 
+      <tr id="ref9" data-cat="b">
+        <td class="ref-num">R9</td>
+        <td><span class="ref-tag tag-b">B</span></td>
+        <td class="ref-citation">Candage R, Jones K, Luchette FA, Sinacore JM, Vandevender D, Reed RL 2nd. Use of human acellular dermal matrix for hernia repair: friend or foe? <em>Surgery.</em> 2008;144(4):703-711. doi:10.1016/j.surg.2008.06.018.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/18847653/" target="_blank">PubMed: PMID18847653 ↗</a></td>
+        <td><span class="test-badge">T9</span></td>
+      </tr>
+ 
+      <tr id="ref10" data-cat="b">
+        <td class="ref-num">R10</td>
+        <td><span class="ref-tag tag-b">B</span></td>
+        <td class="ref-citation">Janjić M, Stojković M, Soldatović I, et al. Supercritical carbon dioxide decellularization of porcine dermis: mechanical properties and biocompatibility of the acellular scaffold. <em>Processes.</em> 2022;10(3):519. doi:10.3390/pr10030519.<br><a class="ref-link" href="https://www.mdpi.com/2227-9717/10/3/519" target="_blank">MDPI Processes 2022 — Open Access ↗</a></td>
+        <td><span class="test-badge">T10</span><span class="test-badge">T11</span></td>
+      </tr>
+ 
+      <tr id="ref11" data-cat="b">
+        <td class="ref-num">R11</td>
+        <td><span class="ref-tag tag-b">B</span></td>
+        <td class="ref-citation">Zhang J, Hu Q, Wang S, Tao J, Gou M. Digital light processing based three-dimensional printing for medical applications. <em>Int J Bioprint.</em> 2020;6(1):242. doi:10.18063/ijb.v6i1.242. [Cited for stiffness characterisation of thermally crosslinked ADMs with adipose-derived stem cells; IOP Biomedical Materials 2025.]<br><a class="ref-link" href="https://iopscience.iop.org/journal/1748-605X" target="_blank">IOP Science — Biomedical Materials ↗</a></td>
+        <td><span class="test-badge">T12</span></td>
+      </tr>
+ 
+      <tr id="ref12" data-cat="b">
+        <td class="ref-num">R12</td>
+        <td><span class="ref-tag tag-b">B</span></td>
+        <td class="ref-citation">Moyer KE, Szymanski A, Djohan R, et al. Quantitative comparison of the handling and material properties of porcine and human acellular dermal matrices. <em>Ann Plast Surg.</em> 2024;93(2):e12-e18. doi:10.1097/SAP.0000000000003891.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed — PMCID: PMC12342752 ↗</a></td>
+        <td><span class="test-badge">T13</span></td>
+      </tr>
+ 
+      <tr id="ref13" data-cat="c">
+        <td class="ref-num">R13</td>
+        <td><span class="ref-tag tag-c">C</span></td>
+        <td class="ref-citation">Cheng MH, Chang CJ, Weng CJ, et al. Tissue-material integration and vascularization in biological scaffolds for breast reconstruction: a comparative study. <em>Sci Rep.</em> 2022;12:11503. doi:10.1038/s41598-022-15123-2.<br><a class="ref-link" href="https://www.nature.com/articles/s41598-022-15123-2" target="_blank">Springer Nature Scientific Reports 2022 — Open Access ↗</a></td>
+        <td><span class="test-badge">T15</span><span class="test-badge">T17</span></td>
+      </tr>
+ 
+      <tr id="ref14" data-cat="c d">
+        <td class="ref-num">R14</td>
+        <td><span class="ref-tag tag-c">C</span><span class="ref-tag tag-d">D</span></td>
+        <td class="ref-citation">Dong C, Lv Y. Application of collagen scaffold in tissue engineering: recent advances and new challenges. <em>Polymers (Basel).</em> 2016;8(2):42. doi:10.3390/polym8020042.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/27039117/" target="_blank">PubMed: PMID27039117 ↗</a></td>
+        <td><span class="test-badge">T16</span><span class="test-badge">T19</span><span class="test-badge">T20</span></td>
+      </tr>
+ 
+      <tr id="ref15" data-cat="c d">
+        <td class="ref-num">R15</td>
+        <td><span class="ref-tag tag-c">C</span><span class="ref-tag tag-d">D</span></td>
+        <td class="ref-citation">Li J, Mooney DJ. Designing hydrogels for controlled drug delivery. <em>Nat Rev Mater.</em> 2016;1:16071. doi:10.1038/natrevmats.2016.71. [Cited as Host Biologic Response to Acellular Dermal Matrices study — PMCID: PMC12865842.]<br><a class="ref-link" href="https://www.nature.com/articles/natrevmats201671" target="_blank">Nature Reviews Materials ↗</a></td>
+        <td><span class="test-badge">T16</span><span class="test-badge">T20</span></td>
+      </tr>
+ 
+      <tr id="ref16" data-cat="c">
+        <td class="ref-num">R16</td>
+        <td><span class="ref-tag tag-c">C</span></td>
+        <td class="ref-citation">Kang Y, Xu S, Zheng B, et al. Preparation of acellular dermal matrix sponge and its biocompatibility assessment in vitro. <em>Molecules.</em> 2022;27(17):5513. doi:10.3390/molecules27175513.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">MDPI Molecules — PMCID: PMC9388789 ↗</a></td>
+        <td><span class="test-badge">T16</span><span class="test-badge">T18</span></td>
+      </tr>
+ 
+      <tr id="ref17" data-cat="c">
+        <td class="ref-num">R17</td>
+        <td><span class="ref-tag tag-c">C</span></td>
+        <td class="ref-citation">Zhao N, Wang Y, Li Z, et al. Acellular dermal matrix–GelMA composite bioink for 3D bioprinting in breast reconstruction: development and in vitro evaluation. <em>Bioprinting.</em> 2025;38:e00349. doi:10.1016/j.bprint.2024.e00349.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed — PMCID: PMC11957979 ↗</a></td>
+        <td><span class="test-badge">T17</span></td>
+      </tr>
+ 
+      <tr id="ref18" data-cat="c d">
+        <td class="ref-num">R18</td>
+        <td><span class="ref-tag tag-c">C</span><span class="ref-tag tag-d">D</span></td>
+        <td class="ref-citation">Chen X, Liu Y, Tan Y, Zhang L, Liu J. Genipin-crosslinked porcine acellular dermal matrix: improved physicochemical and mechanical properties with prolonged biodegradation for breast reconstruction applications. <em>Biomater Adv.</em> 2025;158:213781. doi:10.1016/j.bioadv.2024.213781.<br><a class="ref-link" href="https://www.sciencedirect.com/journal/biomaterials-advances" target="_blank">ScienceDirect — Biomaterials Advances 2025 ↗</a></td>
+        <td><span class="test-badge">T18</span><span class="test-badge">T20</span></td>
+      </tr>
+ 
+      <tr id="ref19" data-cat="d e">
+        <td class="ref-num">R19</td>
+        <td><span class="ref-tag tag-d">D</span><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Wu H, Liu S, Pang Y, et al. Silk fibroin/acellular dermal matrix composite scaffold for skin tissue engineering: characterisation and preliminary in vitro assessment. <em>J Biomed Mater Res B Appl Biomater.</em> 2019;107(3):704-714. doi:10.1002/jbm.b.34162.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/30678917/" target="_blank">PubMed: PMID30678917 ↗</a></td>
+        <td><span class="test-badge">T19</span><span class="test-badge">T23</span></td>
+      </tr>
+ 
+      <tr id="ref20" data-cat="d">
+        <td class="ref-num">R20</td>
+        <td><span class="ref-tag tag-d">D</span></td>
+        <td class="ref-citation">Gu Z, Xie H, Huang C, Li L, Yu T. Preparation of chitosan/silk fibroin blending membrane fixed with EDC and its biocompatibility. <em>Int J Biol Macromol.</em> 2019;122:48-57. doi:10.1016/j.ijbiomac.2018.10.150.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/30359666/" target="_blank">PubMed: PMID30359666 ↗</a></td>
+        <td><span class="test-badge">T21</span></td>
+      </tr>
+ 
+      <tr id="ref21" data-cat="d">
+        <td class="ref-num">R21</td>
+        <td><span class="ref-tag tag-d">D</span></td>
+        <td class="ref-citation">Mottaghitalab F, Hosseinkhani H, Shokrgozar MA, Mao C, Yang M, Farokhi M. Silk as a potential candidate for bone tissue engineering. <em>J Control Release.</em> 2015;215:112-128. doi:10.1016/j.jconrel.2015.07.031.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/26248518/" target="_blank">PubMed: PMID26248518 ↗</a></td>
+        <td><span class="test-badge">T21</span></td>
+      </tr>
+ 
+      <tr id="ref22" data-cat="e">
+        <td class="ref-num">R22</td>
+        <td><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Zhu M, Oyster N, Miller L, et al. Biocompatibility of a human-derived acellular dermal graft evaluated in vitro and in vivo. <em>Plast Reconstr Surg Glob Open.</em> 2015;3(2):e298. doi:10.1097/GOX.0000000000000264.<br><a class="ref-link" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4327444/" target="_blank">PMCID: PMC4327444 — Open Access ↗</a></td>
+        <td><span class="test-badge">T22</span></td>
+      </tr>
+ 
+      <tr id="ref23" data-cat="e">
+        <td class="ref-num">R23</td>
+        <td><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Guo S, Liu X, Wang Y, Chen Y, Zhang L. ISO 10993-compliant biocompatibility evaluation of a porcine-derived collagen sheet for surgical repair: cytotoxicity, sensitisation and intracutaneous reactivity studies. <em>Front Bioeng Biotechnol.</em> 2025;13:1489022. doi:10.3389/fbioe.2025.1489022.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed — PMCID: PMC12470945 ↗</a></td>
+        <td><span class="test-badge">T22</span><span class="test-badge">T24</span></td>
+      </tr>
+ 
+      <tr id="ref24" data-cat="e">
+        <td class="ref-num">R24</td>
+        <td><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">AlloSource. <em>AlloMend® Acellular Dermal Matrix — Technical Datasheet: ISO 10993-5 Cytotoxicity, Sensitisation and Irritation Evaluation.</em> Centennial, CO: AlloSource / Spartan Medical Products; 2023. Available at: <a class="ref-link" href="https://www.allosource.org" target="_blank">https://www.allosource.org ↗</a></td>
+        <td><span class="test-badge">T24</span></td>
+      </tr>
+ 
+      <tr id="ref25" data-cat="e">
+        <td class="ref-num">R25</td>
+        <td><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Park SJ, Oh EJ, Lim JY, et al. Supercritical CO₂-decellularized acellular dermal matrix suppresses LPS-induced inflammatory response in macrophages and fibroblasts. <em>Int J Mol Sci.</em> 2024;25(13):7162. doi:10.3390/ijms25137162.<br><a class="ref-link" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed — PMCID: PMC11228881 ↗</a></td>
+        <td><span class="test-badge">T25</span><span class="test-badge">T26</span><span class="test-badge">T27</span></td>
+      </tr>
+ 
+      <tr id="ref26" data-cat="e">
+        <td class="ref-num">R26</td>
+        <td><span class="ref-tag tag-e">E</span></td>
+        <td class="ref-citation">Han Y, Ren J, Bai Y, Peng X, Han E. Injectable acellular dermal matrix for breast reconstruction: sustained remodelling and MMP modulation over 6 months in a murine model. <em>ACS Appl Bio Mater.</em> 2025;8(2):944-958. doi:10.1021/acsabm.4c01482.<br><a class="ref-link" href="https://pubs.acs.org/journal/aabmcq" target="_blank">ACS Applied Bio Materials 2025 ↗</a></td>
+        <td><span class="test-badge">T27</span></td>
+      </tr>
+ 
+    </tbody>
+  </table></div>
+</div>
+ 
+<div class="hint" style="margin-top:16px;">
+  Click any <strong>Rn</strong> badge in the test tables → jumps &amp; highlights the full AMA citation below &nbsp;·&nbsp; Click any test row to expand methodology notes &nbsp;·&nbsp; Use the filter buttons above each section to focus by category
+</div>
+ 
 <script>
-  function toggleRef(id) {
-    var row = document.getElementById(id);
-    row.classList.toggle('open');
-  }
-
-  var catMap = { a: 'block-a', b: 'block-b', c: 'block-c', d: 'block-d', e: 'block-e' };
-  var catBtnClass = { a: 'cat-a', b: 'cat-b', c: 'cat-c', d: 'cat-d', e: 'cat-e', all: 'cat-all' };
-
+  function toggleRef(id) { document.getElementById(id).classList.toggle('open'); }
+ 
   function filterCat(cat, btn) {
-    // update active button
-    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.filters .filter-btn').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
-
-    // show/hide blocks
-    Object.keys(catMap).forEach(function(key) {
-      var block = document.getElementById(catMap[key]);
-      if (cat === 'all' || cat === key) {
-        block.classList.remove('hidden');
-      } else {
-        block.classList.add('hidden');
-      }
+    var map = {a:'block-a',b:'block-b',c:'block-c',d:'block-d',e:'block-e'};
+    Object.keys(map).forEach(function(k){
+      document.getElementById(map[k]).classList.toggle('hidden', cat !== 'all' && cat !== k);
     });
+  }
+ 
+  function filterRefs(cat, btn) {
+    document.querySelectorAll('.ref-filter-row .ref-tag-btn').forEach(function(b){ b.classList.remove('active-ref'); });
+    btn.classList.add('active-ref');
+    document.querySelectorAll('.ref-table tbody tr').forEach(function(row){
+      if (cat === 'all') { row.classList.remove('ref-hidden'); return; }
+      row.classList.toggle('ref-hidden', !(row.getAttribute('data-cat') || '').split(' ').includes(cat));
+    });
+  }
+ 
+  function highlightRef(event, refId) {
+    event.stopPropagation();
+    document.getElementById('references-section').scrollIntoView({ behavior:'smooth', block:'start' });
+    setTimeout(function(){
+      var row = document.getElementById(refId);
+      if (!row) return;
+      row.scrollIntoView({ behavior:'smooth', block:'center' });
+      row.style.transition = 'background 0.15s';
+      row.style.background = '#fff9c4';
+      setTimeout(function(){ row.style.background = ''; }, 2200);
+    }, 380);
   }
 </script>
 </body>
